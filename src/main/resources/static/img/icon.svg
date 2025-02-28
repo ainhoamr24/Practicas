@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Fondo circular -->
+  <circle cx="16" cy="16" r="16" fill="#f3f4f6" stroke="#2d3748" stroke-width="0.5" />
+
+  <!-- Cara del artista -->
+  <!-- Cabeza -->
+  <circle cx="16" cy="16" r="10" fill="#ffe0bd" />
+
+  <!-- Ojos -->
+  <circle cx="12.5" cy="14" r="1.2" fill="#2d3748" />
+  <circle cx="19.5" cy="14" r="1.2" fill="#2d3748" />
+
+  <!-- Boca -->
+  <path d="M12.5 19 Q16 22 19.5 19" stroke="#d53f8c" stroke-width="1.5" fill="none" />
+
+  <!-- Barba estilizada -->
+  <path d="M10 22 C13 25, 19 25, 22 22" stroke="#2d3748" stroke-width="1.5" fill="none" />
+
+  <!-- Sombrero -->
+  <path d="M8 10 Q16 4 24 10" fill="#2d3748" />
+</svg>
