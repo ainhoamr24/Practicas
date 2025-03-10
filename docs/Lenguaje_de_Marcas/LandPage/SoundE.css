@@ -20,11 +20,10 @@
 * {
     margin: 0;
     padding: 0;
-    user-select: none;
 }
 
 body {
-    margin: 0 20px; /* retocar */
+    margin: 0 20px;
     background-color: black;
     color: white;
 }
@@ -41,18 +40,29 @@ h1 {
 }
 
 header {
+    justify-self: center;
+    width: 80%;
     margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    gap: 20px
+    gap: 5%;
+}
+
+.barra {
+    display: none;
+}
+
+.icono {
+    display: none;
 }
 
 .header-hr {
+    justify-self: center;
     width: 70%;
-    background-color: gray;
+    background-color: grey;
     height: 1px;
+    margin-top: 30px;
     margin-bottom: 30px;
 }
 
@@ -61,7 +71,6 @@ header {
     display: grid;
     grid-template-columns: repeat(8,1fr);
     gap: 10px;
-    margin-bottom: 20px;
 }
 
 .recents__container {
@@ -111,9 +120,66 @@ footer {
 }
 
 @media (min-width: 960px) {
-    .logo {
-        max-width: 100px;
+
+    header {
+        justify-content: space-between;
     }
+
+    .logo{
+        margin-left: 20%;
+        max-width: 80px;
+        height: 30px;
+    }
+    
+    .barra{ /*div que contiene el input y los dos iconos (lupa y biblioteca)*/
+        justify-items: left;
+        justify-content: left;
+        background-color: white;
+        justify-content: center;
+        position: relative;
+        border-radius: 20px;
+        display: flex;
+        width: 80%;
+    }
+    
+    .barra .dualupa{ /*icono de lupa*/
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+    }
+    
+    .barra .libro{ /*icono de libro, biblioteca o como vrgas le quieran llamar*/
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-60%);
+        width: 20px;
+        height: 20px;
+    }
+    
+    .barra input { /*esta pertenece a la barra de buscador*/
+        margin-left: 10%;
+        text-align: left;
+        width: 400px;
+        height: 30px;
+        border: 1px solid #ffffff;
+        border-radius: 20px;
+        font-size: 16px;
+    }
+    
+    input:focus{
+        outline: none;
+        border: none;
+    }
+    
+    .icono{ /*este pertenece al icono que se parece a Ronaldo Nazario cuando estaba en su prime, que jugadorazo!!!*/
+        margin-right: 20%;
+        display: block;
+    }
+
 
     .recents {
         grid-template-columns: repeat(4,1fr);
@@ -133,7 +199,7 @@ footer {
     }
 
     .music-container__scroll {
-        gap: 20px;
+        gap: 30px;
     }
 
     .music-container img {
@@ -142,40 +208,15 @@ footer {
     }
 
     footer > img {
-        width: 50px;
+        display: none;
     }
-
-    .music-container__scroll {
-        padding-left: 5px;
-    }
-
-    .music-container__scroll__song {
-        position: relative;
-        padding: 10px 5px 40px 5px;
-    }
-
-    .music-container__scroll__song::after {
-        content: "";
-        position: absolute;
-        background: #5e5e5e75;
-        z-index: -1;
-        top: 0;
-        left: -5px;
-        border-radius: 8px; 
-        transition: width linear, height linear;
-    }
-
-    .music-container__scroll__song:hover::after {
-        width: 106%;
-        height: 100%;
-    }
-
 }
 
 @media (max-width: 960px) {
     .logo {
         max-width: 100px;
     }
+
 
     .recents {
         grid-template-columns: repeat(2,1fr);
@@ -195,8 +236,8 @@ footer {
 @media (max-width: 600px) {
     .logo {
         max-width: 80px;
-        fle
     }
+
 
     .recents {
         grid-template-columns: repeat(2,1fr);
@@ -216,6 +257,7 @@ footer {
     .recents {
         grid-template-columns: 1fr;
     }
+
 
     .recents__container > img {
         height: 60px;
