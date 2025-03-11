@@ -11,11 +11,14 @@
 <body>
 <header>
     <img src="/img/Logo-ConFondol.png" alt="header-logo" class="logo">
-    <img src="/img/search.svg" alt="" srcset="">
-    <input type="text" id="search" class="search-bar" placeholder="¿Qué te apetece escuchar?">
-    <img src="/img/icon.svg" alt="">
-    <div class="header-hr"></div>
+    <div class="barra">
+        <img src="/img/lupa-gray.png" alt="" class="dualupa">
+        <input type="text" id="search" class="search-bar" placeholder="¿Qué te apetece escuchar?" onfocus="this.placeholder=''" onblur="this.placeholder='¿Qué te apetece escuchar?'">
+        <img src="/img/libro-gray.png" alt="" class="libro">
+    </div>
+    <img src="/img/icon.svg" alt="" class="icono">
 </header>
+<div class="header-hr"></div>
 <main>
     <section class="recents"> <!--Esta seccion es un grid -->
         <div class="recents__container">
@@ -53,7 +56,8 @@
     </section>
     <section class="music-container">
         <header class="music-container__header">
-            <h1 class="music-container__header-title"> <!--El estilo para el header de los sections siempre va ser igual -->
+            <h1 class="music-container__header-title">
+                <!--El estilo para el header de los sections siempre va ser igual -->
                 Descubre nueva música:
             </h1>
         </header>
@@ -106,7 +110,8 @@
     </section>
     <section class="music-container">
         <header class="music-container__header">
-            <h1 class="music-container__header-title"> <!--El estilo para el header de los sections siempre va ser igual -->
+            <h1 class="music-container__header-title">
+                <!--El estilo para el header de los sections siempre va ser igual -->
                 Hecho para ti:
             </h1>
         </header>
@@ -159,7 +164,8 @@
     </section>
     <section class="music-container">
         <header class="music-container__header">
-            <h1 class="music-container__header-title"> <!--El estilo para el header de los sections siempre va ser igual -->
+            <h1 class="music-container__header-title">
+                <!--El estilo para el header de los sections siempre va ser igual -->
                 Lo más escuchado:
             </h1>
         </header>
@@ -212,7 +218,8 @@
     </section>
     <section class="music-container">
         <header class="music-container__header">
-            <h1 class="music-container__header-title"> <!--El estilo para el header de los sections siempre va ser igual -->
+            <h1 class="music-container__header-title">
+                <!--El estilo para el header de los sections siempre va ser igual -->
                 Lo más escuchado:
             </h1>
         </header>
