@@ -35,4 +35,15 @@ public class Playlist {
             inverseJoinColumns = @JoinColumn(name = "lsn_song_id")
     )
     private List<Song> songs;
+
+    @Override
+    public String toString() {
+        return "Playlist{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", imgPath='" + imgPath + '\'' +
+                ", dateCreate=" + dateCreate +
+                ", songs=" + songs +
+                '}';
+    }
 }

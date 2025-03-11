@@ -28,11 +28,6 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @NotBlank(message = "La contraseña no puede estar vacía")
-    @Size(min = 8, message = "La contraseña debe de contener almenos 8 carácteres")
-    @Column(nullable = false)
-    private String password;
-
     @NotNull(message = "La fecha de nacimiento no puede estar vacía")
     @Past(message = "La fecha de nacimiento debe ser una fecha pasada")
     private LocalDate birthdate;
@@ -40,11 +35,10 @@ public class User {
     @Column(nullable = true)
     private String imgPath;
 
-    public User(Long id, String name, String email, String password, LocalDate birthdate, String imgPath) {
+    public User(Long id, String name, String email, LocalDate birthdate, String imgPath) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.password = password;
         this.birthdate = birthdate;
         setImgPath(imgPath);
     }
@@ -54,5 +48,16 @@ public class User {
         if(imgPath.isEmpty())
             this.imgPath = "/img/icon.svg";
 
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", birthdate=" + birthdate +
+                ", imgPath='" + imgPath + '\'' +
+                '}';
     }
 }

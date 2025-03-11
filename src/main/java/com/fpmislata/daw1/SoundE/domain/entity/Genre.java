@@ -30,4 +30,14 @@ public class Genre {
         this.name = name;
         this.imgPath = imgPath;
     }
+
+    @Override
+    public String toString() {
+        return "Genre{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", imgPath='" + imgPath + '\'' +
+                ", songs=" + songs +
+                '}';
+    }
 }
