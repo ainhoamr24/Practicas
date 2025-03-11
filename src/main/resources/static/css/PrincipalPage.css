@@ -1,0 +1,133 @@
+.recents {
+    margin: var(--margin-sections);
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+    gap: 10px;
+}
+
+.recents__container {
+    background-color: var(--gray) ;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    width: 100%;
+}
+
+.music-container {
+    display: flex;
+    flex-direction: column;
+    align-content: start;
+    gap: 20px;
+}
+
+.music-container__header {
+    justify-content: start;
+}
+
+.music-container__scroll{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+.music-container img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+}
+
+@media (min-width: 960px) {
+   .recents {
+        grid-template-columns: repeat(4,1fr);
+    }
+
+    .recents__container > img {
+        height: 100px;
+        width: 100px;
+    }
+
+    .recents__container {
+        transition: background-color 0 linear;
+    }
+
+    .recents__container:hover {
+        background-color: #5e5e5e;
+    }
+
+    .music-container__scroll {
+        gap: 30px;
+    }
+
+    .music-container img {
+        width: 170px;
+        height: 170px;
+    }
+
+    .music-container__scroll {
+        padding-left: 5px;
+    }
+
+    .music-container__scroll__song {
+        position: relative;
+        padding: 10px 5px 40px 5px;
+    }
+
+    .music-container__scroll__song::after {
+        content: "";
+        position: absolute;
+        background: #5e5e5e75;
+        z-index: -1;
+        top: 0;
+        left: -5px;
+        border-radius: 8px;
+        transition: width linear, height linear;
+    }
+
+    .music-container__scroll__song:hover::after {
+        width: 106%;
+        height: 100%;
+    }
+
+}
+
+@media (max-width: 960px) {
+
+    .recents {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .recents__container > img {
+        height: 80px;
+        width: 80px;
+    }
+}
+
+@media (max-width: 600px) {
+    .recents {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .recents__container > img {
+        height: 60px;
+        width: 60px;
+    }
+
+}
+
+@media (max-width: 400px) {
+    .recents {
+        grid-template-columns: 1fr;
+    }
+
+    .recents__container > img {
+        height: 60px;
+        width: 60px;
+    }
+}
