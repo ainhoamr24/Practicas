@@ -1,18 +1,10 @@
 package com.fpmislata.daw1.SoundE.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
 
-@Setter
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Song {
     @Id
@@ -38,6 +30,66 @@ public class Song {
             inverseJoinColumns = @JoinColumn(name = "sgr_genre_id")
     )
     private List<Genre> genres;
+
+    public Song() {
+    }
+
+    public Song(Long id, String imgPath, int minutes, String name, LocalDate dateCreate, List<Genre> genres) {
+        this.id = id;
+        this.imgPath = imgPath;
+        this.minutes = minutes;
+        this.name = name;
+        this.dateCreate = dateCreate;
+        this.genres = genres;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
+
+    public int getMinutes() {
+        return minutes;
+    }
+
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDate getDateCreate() {
+        return dateCreate;
+    }
+
+    public void setDateCreate(LocalDate dateCreate) {
+        this.dateCreate = dateCreate;
+    }
+
+    public List<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<Genre> genres) {
+        this.genres = genres;
+    }
 
     @Override
     public String toString() {
