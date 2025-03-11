@@ -20,7 +20,7 @@ public class Song {
     private Long id;
 
     @Column(nullable = false)
-    private String photo;
+    private String imgPath;
 
     @Column(nullable = false)
     private int minutes;

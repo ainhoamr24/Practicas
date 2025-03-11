@@ -20,14 +20,14 @@ public class Genre {
     private String name;
 
     @Column(nullable = false)
-    private String photo;
+    private String imgPath;
 
     @ManyToMany(mappedBy = "genres")
     private List<Song> songs;
 
-    public Genre(Long id, String name, String photo) {
+    public Genre(Long id, String name, String imgPath) {
         this.id = id;
         this.name = name;
-        this.photo = photo;
+        this.imgPath = imgPath;
     }
 }

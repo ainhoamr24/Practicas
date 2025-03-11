@@ -23,7 +23,7 @@ public class Playlist {
     private String name;
 
     @Column(nullable = false)
-    private String photo;
+    private String imgPath;
 
     @Column(nullable = false)
     private LocalDate dateCreate;

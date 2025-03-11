@@ -38,21 +38,21 @@ public class User {
     private LocalDate birthdate;
 
     @Column(nullable = true)
-    private String photo;
+    private String imgPath;
 
-    public User(Long id, String name, String email, String password, LocalDate birthdate, String photo) {
+    public User(Long id, String name, String email, String password, LocalDate birthdate, String imgPath) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
         this.birthdate = birthdate;
-        setPhoto(photo);
+        setImgPath(imgPath);
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
-        if(photo.isEmpty())
-            this.photo = "/img/icon.svg";
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+        if(imgPath.isEmpty())
+            this.imgPath = "/img/icon.svg";
 
     }
 }
