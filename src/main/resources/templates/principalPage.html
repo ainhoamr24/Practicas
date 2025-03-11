@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/Common.css">
+  <link rel="stylesheet" href="/css/PrincipalPage.css">
+  <title>SoundE</title>
+</head>
+
+<body>
+<header>
+  <img src="/img/Logo-ConFondol.png" alt="header-logo" class="logo">
+  <img src="/img/search.svg" alt="" srcset="">
+  <input type="text" id="search" class="search-bar" placeholder="¿Qué te apetece escuchar?">
+  <img src="/img/icon.svg" alt="">
+  <div class="header-hr"></div>
+</header>
+<main>
+  <section class="recents"> <!--Esta seccion es un grid -->
+    <div class="recents__container" th:each="i : ${#numbers.sequence(1,8)}">
+      <img class="recents__container-picture" th:src="@{${song.imgPath}}" th:alt="${song.name}">
+      <p class="recents__container-songname" th:text="${song.name}"></p>
+    </div>
+  </section>
+
+  <section class="music-container" th:each="genre : ${genres}">
+    <header class="music-container__header">
+      <h1 class="music-container__header-title" th:text="${genre.name}"></h1>
+    </header>
+    <article class="music-container__scroll">
+      <div class="music-container__scroll__song" th:each="song : ${T(org.springframework.util.CollectionUtils).findValue(${getSongsByGenre}, genre.name)}">
+        <img th:src="@{${song.imgPath}}" th:alt="${song.name}}" class="music-container__scroll__song-img">
+        <p class="music-container__scroll__song-subtitle" th:text="${song.name}"></p>
+      </div>
+    </article>
+  </section>
+  <footer>
+    <img src="/img/search.svg" alt="" srcset="">
+    <img src="/img/icon.svg" alt="">
+    <img src="/img/home.svg">
+  </footer>
+</main>
+</body>
+</html>
