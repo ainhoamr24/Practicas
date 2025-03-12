@@ -50,11 +50,11 @@ create table if not exists tb_playlistSong (
 );
 
 create table if not exists tb_songGenres (
-    genre_id_song int,
-    genre_id_genre int,
-    primary key (genre_id_song, genre_id_genre),
-    foreign key (genre_id_song) references song(id_song),
-    foreign key (genre_id_genre) references genre(id_genre)
+    sgr_id_song int,
+    sgr_id_genre int,
+    primary key (sgr_id_song, sgr_id_genre),
+    foreign key (sgr_id_song) references song(id_song),
+    foreign key (sgr_id_genre) references genre(id_genre)
 );
 
 insert into `user` values (1, 'juanhl123', 'juan123', 'juan@juan.com', '2006-02-24', '2024-02-02', '/img/user1.png'),
@@ -105,4 +105,4 @@ where pls_id_playlist = 2;
 
 select *
 from tb_songGenres
-where genre_id_genre = 2;
+where sgr_id_genre = 2;
