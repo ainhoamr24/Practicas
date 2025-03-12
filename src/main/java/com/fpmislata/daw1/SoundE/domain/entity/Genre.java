@@ -2,6 +2,7 @@ package com.fpmislata.daw1.SoundE.domain.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,7 +18,7 @@ public class Genre {
     private String imgPath;
 
     @ManyToMany(mappedBy = "genres")
-    private List<Song> songs;
+    private List<Song> songs = new ArrayList<>();
 
     public Genre() {
     }
