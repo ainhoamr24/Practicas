@@ -22,9 +22,9 @@ public class Playlist {
 
     @ManyToMany
     @JoinTable(
-            name = "tb_listSongs",
-            joinColumns = @JoinColumn(name = "lsn_list_id"),
-            inverseJoinColumns = @JoinColumn(name = "lsn_song_id")
+            name = "tb_playlistSongs",
+            joinColumns = @JoinColumn(name = "pls_playlist_id"),
+            inverseJoinColumns = @JoinColumn(name = "pls_song_id")
     )
     private List<Song> songs;
 

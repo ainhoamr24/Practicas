@@ -2,6 +2,7 @@ package com.fpmislata.daw1.SoundE.domain.entity;
 
 import jakarta.persistence.*;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class Song {
     private String imgPath;
 
     @Column(nullable = false)
-    private int minutes;
+    private Long seconds;
 
     @Column(nullable = false)
     private String name;
@@ -31,16 +32,19 @@ public class Song {
     )
     private List<Genre> genres;
 
+    private Duration duration;
+
     public Song() {
     }
 
-    public Song(Long id, String imgPath, int minutes, String name, LocalDate dateCreate, List<Genre> genres) {
+    public Song(Long id, String imgPath, Long seconds, String name, LocalDate dateCreate, List<Genre> genres) {
         this.id = id;
         this.imgPath = imgPath;
-        this.minutes = minutes;
+        this.seconds = seconds;
         this.name = name;
         this.dateCreate = dateCreate;
         this.genres = genres;
+        setDuration(seconds);
     }
 
     public Long getId() {
@@ -59,12 +63,12 @@ public class Song {
         this.imgPath = imgPath;
     }
 
-    public int getMinutes() {
-        return minutes;
+    public Long getSeconds() {
+        return seconds;
     }
 
-    public void setMinutes(int minutes) {
-        this.minutes = minutes;
+    public void setSeconds(Long seconds) {
+        this.seconds = seconds;
     }
 
     public String getName() {
@@ -91,12 +95,27 @@ public class Song {
         this.genres = genres;
     }
 
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Long seconds) {
+        this.duration = (seconds != null && seconds > 0)
+                ? Duration.ofSeconds(seconds)
+                : Duration.ZERO;
+    }
+
+    public String getFormattedDuration() {
+        return String.format("%02d:%02d", duration.toMinutes(), duration.getSeconds() % 60);
+    }
+
     @Override
     public String toString() {
         return "Song{" +
                 "id=" + id +
                 ", imgPath='" + imgPath + '\'' +
-                ", minutes=" + minutes +
+                ", seconds=" + seconds +
+                ", duration=" + duration +
                 ", name='" + name + '\'' +
                 ", dateCreate=" + dateCreate +
                 ", genres=" + genres +
