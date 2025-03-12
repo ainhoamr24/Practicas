@@ -19,7 +19,7 @@ class SongTest {
             "1, /img/song/1/cover6, 155, Mockingbird, 2005-04-25, 1, Rap",
             "2, /img/song/2/cover2, 190, Something in the way, 1991-05-12, 2, Rock,Rap"
     })
-    void songConstructorTest(Long id, String imgPath, int seconds, String name, String dateCreateStr, Long idGenre, String genreName) {
+    void songConstructorTest(Long id, String imgPath, Long seconds, String name, String dateCreateStr, Long idGenre, String genreName) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d");
         LocalDate dateCreate = LocalDate.parse(dateCreateStr, formatter);
 
