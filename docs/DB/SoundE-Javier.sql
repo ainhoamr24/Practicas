@@ -1,94 +1,108 @@
 drop database if exists SoundE;
 create database SoundE;
 use SoundE;
-
-create table if not exists `tb_user`(
-    usr_id          int     auto_increment,
-    usr_email       text    not null,
-    usr_plan        enum('Gratuito','Individual','Duo','Familiar','Estudiantes') not null,
-    usr_passwd      text not null,
-    usr_mobile      varchar(20) not null,
-    usr_name        varchar(20) not null,
-    usr_photo       text,
-    usr_dateCreate  timestamp default current_timestamp,
-    primary key(usr_id)
+create table if not exists user (
+    id_usr int primary key auto_increment,
+    username varchar(255) not null,
+    password varchar(255) not null,
+    email varchar(255) not null,
+    birthDate date not null,
+    dateCreate date not null,
+    imgPath varchar(255)
 );
 
-create table if not exists `tb_content`(
-    content_id          int auto_increment,
-    content_name        varchar(20) not null,
-    content_artist      varchar(20) not null,
-    content_thumb       text,
-    content_dateCreate  timestamp default current_timestamp,
-    primary key(content_id)
+create table if not exists song (
+    id_song int primary key auto_increment,
+    name varchar(255) not null,
+    seconds bigint not null,
+    dateCreate date not null,
+    imgPath varchar(255) not null
 );
 
-create table if not exists `tb_userPlays`(
-    upl_usr_id         int,
-    upl_content_id     int,
-    upl_dateCreate     timestamp default current_timestamp,
-    primary key(upl_usr_id, upl_content_id),
-    foreign key(upl_usr_id) references tb_user(usr_id),
-    foreign key(upl_content_id) references tb_content(content_id)
+create table if not exists playlist (
+    id_playlist int primary key auto_increment,
+    name varchar(255) not null,
+    dateCreate date not null,
+    imgPath varchar(255) not null
 );
 
-create table if not exists `tb_song`(
-    song_id             int,
-    content_minutes     time not null,
-    song_lirycs         text,
-    primary key(song_id),
-    foreign key(song_id) references tb_content(content_id)
+create table if not exists genre (
+    id_genre int primary key auto_increment,
+    name varchar(255) not null,
+    dateCreate date not null,
+    imgPath varchar(255) not null
 );
 
-create table if not exists `tb_list`(
-    list_id          int,
-    primary key(list_id),
-    foreign key(list_id) references tb_content(content_id)
+create table if not exists reproduce (
+    rpd_id_usr int,
+    rpd_id_song int,
+    primary key (rpd_id_usr, rpd_id_song),
+    foreign key (rpd_id_usr) references user(id_usr),
+    foreign key (rpd_id_song) references song(id_song)
 );
 
-create table if not exists `tb_listSongs`(
-    lsn_list_id  int,
-    lsn_song_id  int,
-    lsn_dateCreate timestamp default current_timestamp,
-    primary key(lsn_list_id, lsn_song_id),
-    foreign key(lsn_list_id) references tb_list(list_id),
-    foreign key(lsn_song_id) references tb_song(song_id)
+create table if not exists tb_playlistSong (
+    pls_id_playlist int,
+    pls_id_song int,
+    primary key (pls_id_playlist, pls_id_song),
+    foreign key (pls_id_playlist) references playlist(id_playlist),
+    foreign key (pls_id_song) references song(id_song)
 );
 
-create table if not exists `tb_genre`(
-    genre_id         int auto_increment,
-    genre_name       varchar(20) not null,
-    genre_dateCreate timestamp default current_timestamp,
-    primary key(genre_id)
+create table if not exists tb_songGenres (
+    genre_id_song int,
+    genre_id_genre int,
+    primary key (genre_id_song, genre_id_genre),
+    foreign key (genre_id_song) references song(id_song),
+    foreign key (genre_id_genre) references genre(id_genre)
 );
 
-create table if not exists `tb_songGenres`(
-    sgr_song_id  int,
-    sgr_genre_id  int,
-    primary key(sgr_song_id, sgr_genre_id),
-    foreign key(sgr_song_id) references tb_song(song_id),
-    foreign key(sgr_genre_id) references tb_genre(genre_id)
-);
+insert into `user` values (1, 'juanhl123', 'juan123', 'juan@juan.com', '2006-02-24', '2024-02-02', '/img/user1.png'),
+(2, 'martast456', 'marta456', 'marta@marta.com', '2002-04-12', '2021-05-07', '/img/user2.png'),
+(3, 'sofialn789', 'sofia789', 'sofia@sofia.com', '2004-01-14', '2018-03-08', '/img/user3.png');
+insert into `song` values (1, 'Happily', '175', '2013-11-25', '/img/happily.png'),
+(2, 'Defenceless', '223', '2020-01-31', '/img/defenceless.png'),
+(3, 'Imagination', '217', '2015-04-14', '/img/imagination.png');
+insert into `playlist` values (1, 'Las mejores canciones', '2024-03-06', '/img/playlist1.png'),
+(2, 'Mix triste', '2022-05-06', '/img/playlist2.png'),
+(3, 'Mix alegre', '2020-03-09', '/img/playlist3.png');
+insert into `genre` values (1, 'pop', '2020-06-07', '/img/pop.png'),
+(2, 'rock', '2010-10-20', '/img/rock.png'),
+(3, 'trap', '2012-12-12', '/img/trap.png');
+insert into `reproduce` values (1, 2),
+(1, 3),
+(2, 3);
+insert into `tb_playlistSong` values (2, 1),
+(3, 1),
+(2, 3);
+insert into `tb_songGenres` values (1, 3),
+(2, 1),
+(1, 2);
 
-insert into tb_user(usr_email,usr_plan,usr_passwd,usr_mobile,usr_name) values ('test4@gmail.com','Familiar','meLLamoJavi','+34094573836','Javier');
+select *
+from user
+where dateCreate < '2020-01-01';
 
-insert into tb_content(content_name, content_artist) values ('Lose My Mind','Pepito 3');
-set @tmp_last_id = LAST_INSERT_ID();
-update tb_content set content_thumb = concat('$GLOBAL_DOCUMENTS/songs/',@tmp_last_id,'/',(select content_name where content_id = @tmp_last_id)) where content_id = @tmp_last_id;
-insert into tb_song values(@tmp_last_id,'00:02:42',"I can get through this\nI can get through this\nI can get through this\nI can get through this\nI'm 'bout to give her everything she ever wanted and more\nWhat I deliver is something that can't be bought at the store\nI'm tryna bring you with me, baby, while I'm finding myself\nThat feeling when you kiss me tells me I don't need no one else\nI had to lose my mind a couple times to find out it's you\nI had to run around the whole world just to be here, it's true\nThese other women don't got nothing on the way that she move\nLet's pick up right where we left off last night inside of my room\nWhen the time come, I'll be right here\nSippin' liquor with a grin on my face for you\nI got nothing left to keep me awake\nI don't got no better thing to do but sit here and wait for you\nFor you\nFor you\nFor you\nI can get through this (for you)\nI can get through this (for you)\nI can get through this (for you)\nI can get through this");
-set @tmp_last_id = null;
+select *
+from song
+where name = 'Defenceless';
 
-insert into tb_content(content_name, content_artist) values ('Changes','Pepe 2');
-set @tmp_last_id = LAST_INSERT_ID();
-update tb_content set content_thumb = concat('$GLOBAL_DOCUMENTS/songs/',@tmp_last_id,'/',(select content_name where content_id = @tmp_last_id)) where content_id = @tmp_last_id;
-insert into tb_list values(@tmp_last_id);
-insert into tb_listSongs (lsn_list_id, lsn_song_id) values (@tmp_last_id,(select content_id from tb_content where content_name like '%Lose My%'));
-set @tmp_last_id = null;
+select *
+from playlist
+where dateCreate > '2022-01-01';
 
-insert into tb_genre (genre_name) values ('Hip-hop');
-insert into tb_genre (genre_name) values ('Rap');
+select *
+from genre
+where name = 'pop';
 
-insert into tb_songGenres values ((select song_id from tb_song where song_id = (select content_id from tb_content where content_name = 'Lose My Mind')),(select genre_id from tb_genre where genre_name = 'Hip-hop'));
-insert into tb_songGenres values ((select song_id from tb_song where song_id = (select content_id from tb_content where content_name = 'Lose My Mind')),(select genre_id from tb_genre where genre_name = 'Rap'));
+select *
+from reproduce
+where rpd_id_usr = 1;
 
-insert into tb_userPlays (upl_usr_id, upl_content_id) values ((select usr_id from tb_user where usr_name = 'Javier'), (select content_id from tb_content where content_name='Lose My Mind'));
+select *
+from tb_playlistSong
+where pls_id_playlist = 2;
+
+select *
+from tb_songGenres
+where genre_id_genre = 2;
