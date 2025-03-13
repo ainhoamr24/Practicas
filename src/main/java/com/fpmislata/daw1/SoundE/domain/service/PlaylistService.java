@@ -10,7 +10,7 @@ import java.util.Set;
 public interface PlaylistService {
     Playlist findPlaylistById(Long id);
     List<Playlist> findByName(String name);
-    Set<Playlist> findByGenre(String genre);
-    Set<Song> getSongsInPlaylist();
+    List<Playlist> findByGenre(String genre);
+    List<Song> getSongsInPlaylist();
     Set<Genre> getGenresInPlaylist();
 }
