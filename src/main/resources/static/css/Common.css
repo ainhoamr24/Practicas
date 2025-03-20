@@ -1,6 +1,7 @@
 :root {
     --subtitle-size: 1.3em;
     --title-size: 1.9em;
+    --h2-size: 1.6em;
     --pink: #d103d1;
     --gray: #404040;
     --border-radius:8px;
@@ -38,6 +39,13 @@ h1 {
     font-family: NotoSans;
     align-self: self-start;
     font-size: var(--title-size);
+}
+
+h2 {
+    font-family: NotoSans;
+    align-self: self-start;
+
+    font-size: var(--h2-size);
 }
 
 header {
