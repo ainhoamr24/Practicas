@@ -5,28 +5,20 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
 public class Genre {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
     private String imgPath;
-
-    @ManyToMany(mappedBy = "genres")
-    private List<Song> songs = new ArrayList<>();
+    private List<Song> songs;
 
     public Genre() {
     }
 
-    public Genre(Long id, String name, String imgPath) {
+    public Genre(Long id, String name, String imgPath, List<Song> songs) {
         this.id = id;
         this.name = name;
         this.imgPath = imgPath;
+        this.songs = songs;
     }
 
     public Long getId() {

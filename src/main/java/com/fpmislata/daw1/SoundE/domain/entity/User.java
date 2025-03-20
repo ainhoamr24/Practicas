@@ -4,27 +4,11 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.time.LocalDate;
 
-@Entity
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @NotBlank(message = "El nombre no puede estar vacío")
-    @Size(max = 20, message = "El nombre no puede contener más de 20 carácteres")
-    @Column(nullable = false)
     private String name;
-
-    @NotBlank(message = "El correo no puede estar vacío")
-    @Email(message = "El correo debe de tener un formato válido")
-    @Column(nullable = false, unique = true)
     private String email;
-
-    @NotNull(message = "La fecha de nacimiento no puede estar vacía")
-    @Past(message = "La fecha de nacimiento debe ser una fecha pasada")
     private LocalDate birthdate;
-
-    @Column(nullable = true)
     private String imgPath;
 
     public User() {

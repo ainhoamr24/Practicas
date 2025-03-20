@@ -5,27 +5,11 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity
 public class Playlist {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
     private String imgPath;
-
-    @Column(nullable = false)
     private LocalDate dateCreate;
-
-    @ManyToMany
-    @JoinTable(
-            name = "tb_playlistSongs",
-            joinColumns = @JoinColumn(name = "pls_playlist_id"),
-            inverseJoinColumns = @JoinColumn(name = "pls_song_id")
-    )
     private List<Song> songs;
 
     public Playlist() {

@@ -8,30 +8,12 @@ import java.util.List;
 
 @Entity
 public class Song {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
     private String imgPath;
-
-    @Column(nullable = false)
     private Long seconds;
-
-    @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
     private LocalDate dateCreate;
-
-    @ManyToMany
-    @JoinTable(
-            name = "tb_songGenres",
-            joinColumns = @JoinColumn(name = "sgr_song_id"),
-            inverseJoinColumns = @JoinColumn(name = "sgr_genre_id")
-    )
     private List<Genre> genres;
-
     private Duration duration;
 
     public Song() {
