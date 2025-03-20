@@ -77,7 +77,7 @@ public class User {
     public void setImgPath(String imgPath) {
         this.imgPath = imgPath;
         if(this.imgPath.isEmpty())
-            this.imgPath = "/img/icon.svg";
+            this.imgPath = "/img/icons/icon.svg";
     }
 
     @Override

@@ -12,8 +12,8 @@ class UserTest {
     @ParameterizedTest(name = "User vacio, setters(id = {0}, name = {1}, email = {2},  birthDate = {3}, imgPath = {4})")
     @DisplayName("User::Constructor")
     @CsvSource({
-            "1, Javier, javier.ejemplo@gmail.com, 2024-12-02, /img/user/1/javier, /img/user/1/javier",
-            "2, Lusmi, Luismi.ejemplo@gmail.com, 1023-12-02, '', /img/icon.svg"
+            "1, Javier, javier.ejemplo@gmail.com, 2024-12-02, /img/users/1/javier, /img/users/1/javier",
+            "2, Lusmi, Luismi.ejemplo@gmail.com, 1023-12-02, '', /img/icons/icon.svg"
     })
     void userConstructorTest(Long id, String name, String email, String birthDateStr, String imgPath, String expectedImagePath) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d");
