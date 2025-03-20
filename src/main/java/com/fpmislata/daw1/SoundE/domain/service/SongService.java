@@ -7,7 +7,7 @@ import com.fpmislata.daw1.SoundE.domain.entity.Song;
 import java.util.List;
 
 public interface SongService {
-    Song findSongById(Long id);
+    Song findById(Long id);
     List<Song> findByName(String name);
     List<Song> findByGenre(String genre);
     List<Genre> getGenresBySong(Song song);

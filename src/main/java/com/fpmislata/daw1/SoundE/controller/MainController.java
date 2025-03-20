@@ -14,6 +14,6 @@ public class MainController {
     @SuppressWarnings("SameReturnValue")
     @GetMapping("/")
     public String index(Model model) {
-        return "index";
+        return "playlistPage";
     }
 }
