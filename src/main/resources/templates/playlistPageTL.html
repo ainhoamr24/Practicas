@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta username="viewport" content="width=device-width, initial-scale=1.0">
   <title>Álbum Musical</title>
   <link rel="stylesheet" href="./Common.css">
   <link rel="stylesheet" href="./PlaylistPage.css">
@@ -20,17 +20,17 @@
 <main>
   <div class="album-container">
     <div class="album-header">
-      <img th:src="${playlist.imgPath}" th:alt="${playlist.name}" class="album-cover">
-      <h1><span th:text="${playlist.name}"></span></h1>
+      <img th:src="${playlist.imgPath}" th:alt="${playlist.username}" class="album-cover">
+      <h1><span th:text="${playlist.username}"></span></h1>
       <div class="artist-info">
         <img src="${playlist.artistImgPath}" alt="Foto del artista" class="artist-photo">
-        <p th:text="${user.name}" th:text="/ ${playlist.dateCreate}"></p>
+        <p th:text="${user.username}" th:text="/ ${playlist.dateCreate}"></p>
       </div>
       <button class="play-button">▶</button>
     </div>
     <section class="tracklist">
       <article class="track" th:each="song : ${songs}">
-        <p span th:text="${song.name}"></p>
+        <p span th:text="${song.username}"></p>
         <h3><span th:text="${song.artistImgPath}"></span></h3>
       </article>
     </section>

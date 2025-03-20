@@ -15,20 +15,20 @@ class UserTest {
             "1, Javier, javier.ejemplo@gmail.com, 2024-12-02, /img/users/1/javier, /img/users/1/javier",
             "2, Lusmi, Luismi.ejemplo@gmail.com, 1023-12-02, '', /img/icons/icon.svg"
     })
-    void userConstructorTest(Long id, String name, String email, String birthDateStr, String imgPath, String expectedImagePath) {
+    void userConstructorTest(Long id, String username, String email, String birthDateStr, String imgPath, String expectedImagePath) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d");
         LocalDate birthDate = LocalDate.parse(birthDateStr, formatter);
 
         User user = new User();
         user.setId(id);
-        user.setName(name);
+        user.setUsername(username);
         user.setEmail(email);
         user.setBirthdate(birthDate);
         user.setImgPath(imgPath);
 
         assertAll(
                 () -> assertEquals(user.getId(), id),
-                () -> assertEquals(user.getName(), name),
+                () -> assertEquals(user.getUsername(), username),
                 () -> assertEquals(user.getEmail(), email),
                 () -> assertEquals(user.getBirthdate(), birthDate),
                 () -> assertEquals(user.getImgPath(), expectedImagePath)

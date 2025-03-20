@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta username="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/Common.css">
   <link rel="stylesheet" href="/css/PrincipalPage.css">
   <title>SoundE</title>
@@ -20,19 +20,19 @@
 <main>
   <section class="recents"> <!--Esta seccion es un grid -->
     <div class="recents__container" th:each="i : ${#numbers.sequence(1,8)}">
-      <img class="recents__container-picture" th:src="@{${song.imgPath}}" th:alt="${song.name}">
-      <p class="recents__container-songname" th:text="${song.name}"></p>
+      <img class="recents__container-picture" th:src="@{${song.imgPath}}" th:alt="${song.username}">
+      <p class="recents__container-songname" th:text="${song.username}"></p>
     </div>
   </section>
 
   <section class="music-container" th:each="genre : ${genres}">
     <header class="music-container__header">
-      <h1 class="music-container__header-title" th:text="${genre.name}"></h1>
+      <h1 class="music-container__header-title" th:text="${genre.username}"></h1>
     </header>
     <article class="music-container__scroll">
-      <div class="music-container__scroll__song" th:each="song : ${T(org.springframework.util.CollectionUtils).findValue(${getSongsByGenre}, genre.name)}">
-        <img th:src="@{${song.imgPath}}" th:alt="${song.name}}" class="music-container__scroll__song-img">
-        <p class="music-container__scroll__song-subtitle" th:text="${song.name}"></p>
+      <div class="music-container__scroll__song" th:each="song : ${T(org.springframework.util.CollectionUtils).findValue(${getSongsByGenre}, genre.username)}">
+        <img th:src="@{${song.imgPath}}" th:alt="${song.username}}" class="music-container__scroll__song-img">
+        <p class="music-container__scroll__song-subtitle" th:text="${song.username}"></p>
       </div>
     </article>
   </section>

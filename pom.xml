@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.fpmislata.daw1</groupId>
     <artifactId>SoundE</artifactId>
-    <name>SoundE</name>
+    <username>SoundE</username>
     <version>0.6</version>
     <description>SoundE</description>
     <properties>

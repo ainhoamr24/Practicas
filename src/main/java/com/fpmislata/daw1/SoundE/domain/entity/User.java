@@ -1,12 +1,10 @@
 package com.fpmislata.daw1.SoundE.domain.entity;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import java.time.LocalDate;
 
 public class User {
     private Long id;
-    private String name;
+    private String username;
     private String email;
     private LocalDate birthdate;
     private String imgPath;
@@ -14,9 +12,9 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String name, String email, LocalDate birthdate, String imgPath) {
+    public User(Long id, String username, String email, LocalDate birthdate, String imgPath) {
         this.id = id;
-        this.name = name;
+        this.username = username;
         this.email = email;
         this.birthdate = birthdate;
         setImgPath(imgPath);
@@ -30,12 +28,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -68,7 +66,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", birthdate=" + birthdate +
                 ", imgPath='" + imgPath + '\'' +
