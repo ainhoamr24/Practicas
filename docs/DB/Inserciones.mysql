@@ -1,0 +1,77 @@
+insert into tb_song(name, seconds, dateCreate, imgPath) values
+    ('Dgt', 194, curdate(), 'dgt.jpg'),
+    ('Young Man', 203, curdate(), 'ymca.jpg'),
+    ('Holding Out for a Hero', 934, curdate(), 'heroout.jpg'),
+    ('Re-Hash', 270, curdate(), 'gorillaz.jpg'),
+    ('5/4', 194, curdate(), 'gorillaz.jpg'),
+    ('Tomorrow Comes Today', 194, curdate(), 'gorillaz.jpg'),
+    ('Clint Eastwood', 194, curdate(), 'gorillaz.jpg'),
+    ('Man Research', 194, curdate(), 'gorillaz.jpg'),
+    ('Shy', 194, curdate(), 'windows.jpg'),
+    ('Televised', 194, curdate(), 'windows.jpg'),
+    ("Lula, I'm Not Mad", 194, curdate(), 'yes_yes.jpg'),
+    ('Change Ur Mind', 194, curdate(), 'yes_yes.jpg');
+
+insert into tb_playlist(name, dateCreate, imgPath) values
+    ('Gorillaz', curdate(), 'gorillaz.jpg'),
+    ('Windows I', curdate(), 'windows.jpg'),
+    ('Yes. Yes. Yes. Yes. Yes', curdate(), 'yes_yes.jpg');
+
+insert into tb_playlistsong(pls_id_playlist, pls_id_song) values
+    (1, 4),
+    (1, 5),
+    (1, 6),
+    (1, 7),
+    (1, 8),
+    (2,9),
+    (2,10),
+    (3,11),
+    (3,12);
+
+insert into tb_genre(name, dateCreate, imgPath) values
+    ('Trap', curdate(), 'trap.jpg'),
+    ('Indie', curdate(), ''),
+    ('Jazz', curdate(), ''),
+    ('Pop', curdate(), ''),
+    ('Flamenco', curdate(), ''),
+    ('Disco', curdate(), ''),
+    ('Electropop', curdate(), ''),
+    ('rock', curdate(), ''),
+    ('hip hop', curdate(), ''),
+    ('Electronica', curdate(), ''),
+    ('Disco', curdate(), ''),
+    ('Alternativo', curdate(), '');
+
+insert into tb_songGenres(sgr_id_song, sgr_id_genre) values
+    (1,10),
+    (2,11),
+    (3,11),
+    (4,4),
+    (4,7),
+    (4,8),
+    (4,9),
+    (4,10),
+    (5,4),
+    (5,7),
+    (5,8),
+    (5,9),
+    (5,10),
+    (6,4),
+    (6,7),
+    (6,8),
+    (6,9),
+    (6,10),
+    (7,4),
+    (7,7),
+    (7,8),
+    (7,9),
+    (7,10),
+    (8,4),
+    (8,7),
+    (8,8),
+    (8,9),
+    (8,10),
+    (9,12),
+    (10,12),
+    (11,12),
+    (12,12);
