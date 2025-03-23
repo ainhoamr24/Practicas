@@ -10,6 +10,8 @@ import java.util.List;
 public class Song {
     private Long id;
     private String imgPath;
+  
+    @Column(nullable = false)
     private Long seconds;
     private String name;
     private LocalDate dateCreate;
