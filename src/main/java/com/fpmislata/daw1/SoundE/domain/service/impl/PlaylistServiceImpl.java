@@ -4,6 +4,7 @@ import com.fpmislata.daw1.SoundE.domain.entity.Genre;
 import com.fpmislata.daw1.SoundE.domain.entity.Playlist;
 import com.fpmislata.daw1.SoundE.domain.entity.Song;
 import com.fpmislata.daw1.SoundE.domain.service.PlaylistService;
+import com.fpmislata.daw1.SoundE.persistance.repository.PlaylistRepository;
 
 import java.util.List;
 import java.util.Set;
@@ -17,7 +18,7 @@ public class PlaylistServiceImpl implements PlaylistService {
 
     @Override
     public Playlist findById(Long id) {
-        playlistRepository.findById(id);
+        return playlistRepository.findById(id);
     }
 
     @Override
@@ -30,13 +31,5 @@ public class PlaylistServiceImpl implements PlaylistService {
         return playlistRepository.findByGenre(genre);
     }
 
-    @Override
-    public List<Song> getSongsInPlaylist() {
-        return playlistRepository.getSongsInPlaylist();
-    }
 
-    @Override
-    public Set<Genre> getGenresInPlaylist() {
-        return playlistRepository.getGenresInPlaylist();
-    }
 }

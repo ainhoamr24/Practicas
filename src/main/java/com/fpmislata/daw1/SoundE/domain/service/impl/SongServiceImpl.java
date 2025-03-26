@@ -1,8 +1,11 @@
 package com.fpmislata.daw1.SoundE.domain.service.impl;
 
 import com.fpmislata.daw1.SoundE.domain.entity.Genre;
+import com.fpmislata.daw1.SoundE.domain.entity.Playlist;
 import com.fpmislata.daw1.SoundE.domain.entity.Song;
 import com.fpmislata.daw1.SoundE.domain.service.SongService;
+import com.fpmislata.daw1.SoundE.persistance.repository.PlaylistRepository;
+import com.fpmislata.daw1.SoundE.persistance.repository.SongRepository;
 
 import java.util.List;
 
@@ -30,7 +33,13 @@ public class SongServiceImpl implements SongService {
     }
 
     @Override
-    public List<Genre> getGenresBySong(Song song) {
-        return songRepository.getGenresBySong;
+    public List<Song> getByGenre(String genre) {
+        return songRepository.getByGenre(genre);
     }
+
+    @Override
+    public List<Song> getInPlaylist(Playlist playlist) {
+        return songRepository.getInPlaylist(playlist);
+    }
+
 }

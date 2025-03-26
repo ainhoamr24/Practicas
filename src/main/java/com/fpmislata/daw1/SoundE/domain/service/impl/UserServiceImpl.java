@@ -2,6 +2,7 @@ package com.fpmislata.daw1.SoundE.domain.service.impl;
 
 import com.fpmislata.daw1.SoundE.domain.entity.User;
 import com.fpmislata.daw1.SoundE.domain.service.UserService;
+import com.fpmislata.daw1.SoundE.persistance.repository.UserRepository;
 
 import java.time.LocalDate;
 
@@ -13,18 +14,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByUsername(String username) {
+    public User findByUserName(String username) {
         return userRepository.findByUserName(username);
     }
 
     @Override
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
+    public User findByEmail(String email) { return userRepository.findByEmail(email); }
 
     @Override
     public void create(String username, String email, LocalDate birthDate, String photo, String password) {
-        if (findByUsername(username) != null) {
+        if (findByUserName(username) != null) {
             throw new RuntimeException("Ya existe un usuario con este nombre");
         } else if (findByEmail(email) != null) {
             throw new RuntimeException("Ya existe un usuario con este correo electronico");
@@ -35,15 +34,6 @@ public class UserServiceImpl implements UserService {
         user.setEmail(email);
         user.setBirthdate(birthDate);
         user.setImgPath("/img/icons/icon.svg");
-        userRepository.create(user, password);
-    }
-
-    @Override
-    public void login(String username, String password) {
-        boolean logged = userRepository.login(username, password);
-        if (logged) {
-            User currentUser = findByUsername(username);
-            UserSession.setUser(currentUser);
-        }
+        userRepository.create(username, email, birthDate, photo, password);
     }
 }
