@@ -23,7 +23,7 @@ class SongTest {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d");
         LocalDate dateCreate = LocalDate.parse(dateCreateStr, formatter);
 
-        List<Genre> genres = List.of(new Genre(idGenre,genreName,"",null));
+        List<Genre> genres = List.of(new Genre(idGenre,genreName,""));
 
         Song song = new Song();
         song.setId(id);
