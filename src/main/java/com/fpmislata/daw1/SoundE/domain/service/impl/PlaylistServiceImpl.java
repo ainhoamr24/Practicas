@@ -22,6 +22,11 @@ public class PlaylistServiceImpl implements PlaylistService {
     }
 
     @Override
+    public List<Playlist> findAll() {
+        return playlistRepository.findAll();
+    }
+
+    @Override
     public List<Playlist> findByName(String name) {
         return playlistRepository.findByName(name);
     }
@@ -31,5 +36,13 @@ public class PlaylistServiceImpl implements PlaylistService {
         return playlistRepository.findByGenre(genre);
     }
 
+    @Override
+    public List<Song> getSongsInPlaylist(Long id) {
+        return playlistRepository.getSongsInPlaylist(id);
+    }
 
+    @Override
+    public Set<Genre> getGenresInPlaylist(Long id) {
+        return playlistRepository.getGenresInPlaylist(id);
+    }
 }

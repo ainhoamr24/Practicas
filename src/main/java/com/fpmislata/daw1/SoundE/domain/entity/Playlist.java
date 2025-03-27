@@ -9,16 +9,20 @@ public class Playlist {
     private Long id;
     private String name;
     private String imgPath;
+    private String artist;
+    private String artistPath;
     private LocalDate dateCreate;
     private List<Song> songs;
 
     public Playlist() {
     }
 
-    public Playlist(Long id, String name, String imgPath, LocalDate dateCreate, List<Song> songs) {
+    public Playlist(Long id, String name, String imgPath, String artist, String artistPath, LocalDate dateCreate, List<Song> songs) {
         this.id = id;
         this.name = name;
         this.imgPath = imgPath;
+        this.artist = artist;
+        this.artistPath = artistPath;
         this.dateCreate = dateCreate;
         this.songs = songs;
     }
@@ -47,6 +51,22 @@ public class Playlist {
         this.imgPath = imgPath;
     }
 
+    public String getArtist() {
+        return artist;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public String getArtistPath() {
+        return artistPath;
+    }
+
+    public void setArtistPath(String artistPath) {
+        this.artistPath = artistPath;
+    }
+
     public LocalDate getDateCreate() {
         return dateCreate;
     }
@@ -69,6 +89,8 @@ public class Playlist {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", imgPath='" + imgPath + '\'' +
+                ", artist='" + artist + '\'' +
+                ", artistPath='" + artistPath + '\'' +
                 ", dateCreate=" + dateCreate +
                 ", songs=" + songs +
                 '}';
