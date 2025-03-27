@@ -3,34 +3,38 @@ create database SoundE;
 use SoundE;
 create table if not exists tb_user (
     id_usr int primary key auto_increment,
-    username varchar(255) not null,
-    password varchar(255) not null,
-    email varchar(255) not null,
+    username varchar(50) not null,
+    password varchar(50) not null,
+    email text not null,
     birthDate date not null,
     dateCreate date not null,
-    imgPath varchar(255)
+    imgPath text
 );
 
 create table if not exists tb_song (
     id_song int primary key auto_increment,
-    name varchar(255) not null,
+    name varchar(50) not null,
+    artist varchar(50) not null,
+    artistImgPath text,
     seconds bigint not null,
     dateCreate date not null,
-    imgPath varchar(255) not null
+    imgPath text not null
 );
 
 create table if not exists tb_playlist (
     id_playlist int primary key auto_increment,
-    name varchar(255) not null,
+    name varchar(50) not null,
+    artist varchar(50) not null,
+    artistImgPath text,
     dateCreate date not null,
-    imgPath varchar(255) not null
+    imgPath text not null
 );
 
 create table if not exists tb_genre (
     id_genre int primary key auto_increment,
-    name varchar(255) not null,
+    name varchar(50) not null,
     dateCreate date not null,
-    imgPath varchar(255) not null
+    imgPath text not null
 );
 
 create table if not exists tb_userSong (
