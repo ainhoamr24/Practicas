@@ -9,16 +9,14 @@ public class Genre {
     private Long id;
     private String name;
     private String imgPath;
-    private List<Song> songs;
 
     public Genre() {
     }
 
-    public Genre(Long id, String name, String imgPath, List<Song> songs) {
+    public Genre(Long id, String name, String imgPath) {
         this.id = id;
         this.name = name;
         this.imgPath = imgPath;
-        this.songs = songs;
     }
 
     public Long getId() {
@@ -45,21 +43,12 @@ public class Genre {
         this.imgPath = imgPath;
     }
 
-    public List<Song> getSongs() {
-        return songs;
-    }
-
-    public void setSongs(List<Song> songs) {
-        this.songs = songs;
-    }
-
     @Override
     public String toString() {
         return "Genre{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", imgPath='" + imgPath + '\'' +
-                ", songs=" + songs +
                 '}';
     }
 }
