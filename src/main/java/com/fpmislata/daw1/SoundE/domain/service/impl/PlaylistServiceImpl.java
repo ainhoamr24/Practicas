@@ -22,12 +22,27 @@ public class PlaylistServiceImpl implements PlaylistService {
     }
 
     @Override
+    public List<Playlist> findAll() {
+        return playlistRepository.findAll();
+    }
+
+    @Override
     public List<Playlist> findByName(String name) {
         return playlistRepository.findByName(name);
     }
 
     @Override
-    public List<Playlist> findByGenre(String genre) {
-        return playlistRepository.findByGenre(genre);
+    public List<Playlist> findByGenre(Genre genre) {
+        return playlistRepository.findByGenre(genre.getName());
+    }
+
+    @Override
+    public List<Song> findSongsInPlaylist(Playlist playlist) {
+        return playlistRepository.findSongsInPlaylist(playlist.getId());
+    }
+
+    @Override
+    public Set<Genre> findGenresInPlaylist(Playlist playlist) {
+        return playlistRepository.findGenresInPlaylist(playlist.getId());
     }
 }
