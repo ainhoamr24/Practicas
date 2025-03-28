@@ -2,12 +2,14 @@ package com.fpmislata.daw1.SoundE.persistance.repository.impl;
 
 import com.fpmislata.daw1.SoundE.domain.entity.Playlist;
 import com.fpmislata.daw1.SoundE.persistance.dao.PlaylistDao;
+import com.fpmislata.daw1.SoundE.persistance.dao.PlaylistSongDao;
 import com.fpmislata.daw1.SoundE.persistance.repository.PlaylistRepository;
 
 import java.util.List;
 
 public class PlaylistRepositoryImpl implements PlaylistRepository {
     private PlaylistDao playlistDao;
+    private PlaylistSongDao playlistSongDao;
 
     public PlaylistRepositoryImpl(PlaylistDao playlistDao) {
         this.playlistDao = playlistDao;
@@ -30,6 +32,6 @@ public class PlaylistRepositoryImpl implements PlaylistRepository {
 
     @Override
     public List<Playlist> findByGenre(String name) {
-        return playlistDao.findByGenre(name);
+        return playlistSongDao.findByGenre(name);
     }
 }
