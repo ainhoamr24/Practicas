@@ -115,26 +115,4 @@ public class PlaylistServiceImplTest {
         }
 
     }
-
-    @Nested
-    class FindSongsInPlaylist {
-        @BeforeEach
-        void setup() {
-            playlistTest = new Playlist(2L,"Prueba","","","",null,null);
-        }
-
-        @Test
-        void givenPlaylistWithSongs_shouldReturnThatSongs() {
-            when(playlistService.findSongsInPlaylist(PLAYLIST)).thenReturn(songs);
-
-            assertEquals(playlistService.findSongsInPlaylist(PLAYLIST), songs);
-        }
-
-        @Test
-        void givenVoidPlaylist_shouldReturnNull() {
-            when(playlistService.findSongsInPlaylist(playlistTest)).thenReturn(null);
-
-            assertNull(playlistService.findSongsInPlaylist(playlistTest));
-        }
-    }
 }

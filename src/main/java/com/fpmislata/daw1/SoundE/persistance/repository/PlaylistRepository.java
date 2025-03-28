@@ -12,5 +12,4 @@ public interface PlaylistRepository {
     List<Playlist> findAll();
     List<Playlist> findByName(String name);
     List<Playlist> findByGenre(String name);
-    List<Song> findSongsInPlaylist(Long id);
 }

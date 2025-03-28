@@ -12,5 +12,4 @@ public interface PlaylistService {
     List<Playlist> findAll();
     List<Playlist> findByName(String name);
     List<Playlist> findByGenre(Genre genre);
-    List<Song> findSongsInPlaylist(Playlist playlist);
 }
