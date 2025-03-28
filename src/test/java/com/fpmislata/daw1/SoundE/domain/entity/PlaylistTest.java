@@ -29,7 +29,7 @@ class PlaylistTest {
         playlist.setName(name);
         playlist.setImgPath(imgPath);
         playlist.setArtist(artist);
-        playlist.setArtistPath(artistPath);
+        playlist.setArtistImgPath(artistPath);
         playlist.setDateCreate(dateCreate);
         playlist.setSongs(songs);
 
@@ -38,7 +38,7 @@ class PlaylistTest {
                 () -> assertEquals(playlist.getName(), name),
                 () -> assertEquals(playlist.getImgPath(), imgPath),
                 () -> assertEquals(playlist.getArtist(), artist),
-                () -> assertEquals(playlist.getArtistPath(), artistPath),
+                () -> assertEquals(playlist.getArtistImgPath(), artistPath),
                 () -> assertEquals(playlist.getDateCreate(), dateCreate),
                 () -> assertEquals(playlist.getSongs().size(), songsCount)
         );

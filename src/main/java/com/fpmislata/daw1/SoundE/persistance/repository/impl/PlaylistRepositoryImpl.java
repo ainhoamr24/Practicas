@@ -35,4 +35,9 @@ public class PlaylistRepositoryImpl implements PlaylistRepository {
     public List<Playlist> findByGenre(String name) {
         return playlistSongDao.findByGenre(name);
     }
+
+    @Override
+    public Playlist getPlaylistWithSongs(Long id) {
+        return playlistSongDao.getPlaylistWithSongs(id);
+    }
 }

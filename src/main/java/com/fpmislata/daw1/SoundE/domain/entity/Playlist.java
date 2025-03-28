@@ -1,7 +1,5 @@
 package com.fpmislata.daw1.SoundE.domain.entity;
 
-import jakarta.persistence.*;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -10,19 +8,19 @@ public class Playlist {
     private String name;
     private String imgPath;
     private String artist;
-    private String artistPath;
+    private String artistImgPath;
     private LocalDate dateCreate;
     private List<Song> songs;
 
     public Playlist() {
     }
 
-    public Playlist(Long id, String name, String imgPath, String artist, String artistPath, LocalDate dateCreate, List<Song> songs) {
+    public Playlist(Long id, String name, String imgPath, String artist, String artistImgPath, LocalDate dateCreate, List<Song> songs) {
         this.id = id;
         this.name = name;
         this.imgPath = imgPath;
         this.artist = artist;
-        this.artistPath = artistPath;
+        this.artistImgPath = artistImgPath;
         this.dateCreate = dateCreate;
         this.songs = songs;
     }
@@ -59,12 +57,12 @@ public class Playlist {
         this.artist = artist;
     }
 
-    public String getArtistPath() {
-        return artistPath;
+    public String getArtistImgPath() {
+        return artistImgPath;
     }
 
-    public void setArtistPath(String artistPath) {
-        this.artistPath = artistPath;
+    public void setArtistImgPath(String artistImgPath) {
+        this.artistImgPath = artistImgPath;
     }
 
     public LocalDate getDateCreate() {
@@ -90,7 +88,7 @@ public class Playlist {
                 ", name='" + name + '\'' +
                 ", imgPath='" + imgPath + '\'' +
                 ", artist='" + artist + '\'' +
-                ", artistPath='" + artistPath + '\'' +
+                ", artistImgPath='" + artistImgPath + '\'' +
                 ", dateCreate=" + dateCreate +
                 ", songs=" + songs +
                 '}';

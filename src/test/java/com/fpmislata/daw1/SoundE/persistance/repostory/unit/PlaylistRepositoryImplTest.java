@@ -4,6 +4,7 @@ import com.fpmislata.daw1.SoundE.domain.entity.Genre;
 import com.fpmislata.daw1.SoundE.domain.entity.Playlist;
 import com.fpmislata.daw1.SoundE.domain.entity.Song;
 import com.fpmislata.daw1.SoundE.persistance.dao.PlaylistDao;
+import com.fpmislata.daw1.SoundE.persistance.dao.PlaylistSongDao;
 import com.fpmislata.daw1.SoundE.persistance.repository.impl.PlaylistRepositoryImpl;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,6 +28,9 @@ public class PlaylistRepositoryImplTest {
 
     @Mock
     private PlaylistDao playlistDao;
+
+    @Mock
+    private PlaylistSongDao playlistSongDao;
 
     @InjectMocks
     private PlaylistRepositoryImpl playlistRepository;
@@ -111,5 +115,15 @@ public class PlaylistRepositoryImplTest {
             assertNull(playlistRepository.findByGenre(genreTest.getName()));
         }
 
+    }
+
+    @Test
+    void givenPlaylistWitAttributeSongsVoid_shoudlReturnPlaylistWithSongs() {
+        Playlist playlistTest = new Playlist(1L,"Vowels","/images/playlist/hunny.jpg","HUNNY","/images/artits/playlist",LocalDate.parse("2020-03-12"),null);
+        when(playlistRepository.getPlaylistWithSongs(playlistTest.getId())).thenReturn(PLAYLIST);
+
+        Playlist playlist = playlistRepository.getPlaylistWithSongs(playlistTest.getId());
+
+        assertEquals(playlist, PLAYLIST);
     }
 }
