@@ -8,11 +8,12 @@ import com.fpmislata.daw1.SoundE.persistance.repository.PlaylistRepository;
 import java.util.List;
 
 public class PlaylistRepositoryImpl implements PlaylistRepository {
-    private PlaylistDao playlistDao;
-    private PlaylistSongDao playlistSongDao;
+    private final PlaylistDao playlistDao;
+    private final PlaylistSongDao playlistSongDao;
 
-    public PlaylistRepositoryImpl(PlaylistDao playlistDao) {
+    public PlaylistRepositoryImpl(PlaylistDao playlistDao, PlaylistSongDao playlistSongDao) {
         this.playlistDao = playlistDao;
+        this.playlistSongDao = playlistSongDao;
     }
 
     @Override
