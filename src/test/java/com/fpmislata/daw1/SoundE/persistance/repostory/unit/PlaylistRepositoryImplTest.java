@@ -1,10 +1,10 @@
-package com.fpmislata.daw1.SoundE.domain.service.unit;
+package com.fpmislata.daw1.SoundE.persistance.repostory.unit;
 
 import com.fpmislata.daw1.SoundE.domain.entity.Genre;
 import com.fpmislata.daw1.SoundE.domain.entity.Playlist;
 import com.fpmislata.daw1.SoundE.domain.entity.Song;
-import com.fpmislata.daw1.SoundE.domain.service.impl.PlaylistServiceImpl;
-import com.fpmislata.daw1.SoundE.persistance.repository.PlaylistRepository;
+import com.fpmislata.daw1.SoundE.persistance.dao.PlaylistDao;
+import com.fpmislata.daw1.SoundE.persistance.repository.impl.PlaylistRepositoryImpl;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class PlaylistServiceImplTest {
+public class PlaylistRepositoryImplTest {
     private final Genre GENRE = new Genre(1L,"Pop","");
     private final List<Song> songs = List.of(new Song(1L,"/images/songs/vowels",230L,"Song1", LocalDate.parse("2020-03-12"),null), new Song(2L,"/images/songs/vowels",230L,"Song1", LocalDate.parse("2020-03-12"),List.of(GENRE)));
     private final Playlist PLAYLIST = new Playlist(1L,"Vowels","/images/playlist/hunny.jpg","HUNNY","/images/artits/playlist",LocalDate.parse("2020-03-12"),songs);
@@ -26,35 +26,35 @@ public class PlaylistServiceImplTest {
     private Genre genreTest;
 
     @Mock
-    private PlaylistRepository playlistRepository;
+    private PlaylistDao playlistDao;
 
     @InjectMocks
-    private PlaylistServiceImpl playlistService;
+    private PlaylistRepositoryImpl playlistRepository;
 
     @Nested
     class FindById {
         @Test
         void givenExistingId_shouldReturnPlaylist() {
-            when(playlistRepository.findById(1L)).thenReturn(PLAYLIST);
+            when(playlistDao.findById(1L)).thenReturn(PLAYLIST);
 
-            Playlist playlist = playlistService.findById(1L);
+            Playlist playlist = playlistRepository.findById(1L);
 
             assertEquals(PLAYLIST, playlist);
         }
 
         @Test
         void nonExistingId_shouldReturnNull() {
-            when(playlistRepository.findById(2L)).thenReturn(null);
+            when(playlistDao.findById(2L)).thenReturn(null);
 
-            assertNull(playlistService.findById(2L));
+            assertNull(playlistRepository.findById(2L));
         }
     }
 
     @Test
     void findAll() {
-        when(playlistService.findAll()).thenReturn(List.of(PLAYLIST));
+        when(playlistRepository.findAll()).thenReturn(List.of(PLAYLIST));
 
-        List<Playlist> playlists = playlistService.findAll();
+        List<Playlist> playlists = playlistRepository.findAll();
 
         assertEquals(playlists, List.of(PLAYLIST));
     }
@@ -63,27 +63,27 @@ public class PlaylistServiceImplTest {
     class FindByName {
         @Test
         void givenExistingName_shouldReturnAPlaylistWithThatName() {
-            when(playlistService.findByName("Vowels")).thenReturn(List.of(PLAYLIST));
+            when(playlistRepository.findByName("Vowels")).thenReturn(List.of(PLAYLIST));
 
-            List<Playlist> playlists = playlistService.findByName("Vowels");
+            List<Playlist> playlists = playlistRepository.findByName("Vowels");
 
             assertEquals(playlists, List.of(PLAYLIST));
         }
 
         @Test
         void givenPartOfAName_shouldReturnAPlaylistWithThatName() {
-            when(playlistService.findByName("Vow")).thenReturn(List.of(PLAYLIST));
+            when(playlistRepository.findByName("Vow")).thenReturn(List.of(PLAYLIST));
 
-            List<Playlist> playlists = playlistService.findByName("Vow");
+            List<Playlist> playlists = playlistRepository.findByName("Vow");
 
             assertEquals(playlists, List.of(PLAYLIST));
         }
 
         @Test
         void givenNonExistingName_shouldReturnNull() {
-            when(playlistService.findByName("pepe")).thenReturn(null);
+            when(playlistRepository.findByName("pepe")).thenReturn(null);
 
-            assertNull(playlistService.findByName("pepe"));
+            assertNull(playlistRepository.findByName("pepe"));
         }
     }
 
@@ -97,18 +97,18 @@ public class PlaylistServiceImplTest {
 
         @Test
         void givenAExistingGenre_shoudlReturnAPlaylistThatHaveIt() {
-            when(playlistService.findByGenre(GENRE)).thenReturn(List.of(PLAYLIST));
+            when(playlistRepository.findByGenre(GENRE.getName())).thenReturn(List.of(PLAYLIST));
 
-            List<Playlist> playlists = playlistService.findByGenre(GENRE);
+            List<Playlist> playlists = playlistRepository.findByGenre(GENRE.getName());
 
             assertEquals(playlists,List.of(PLAYLIST));
         }
 
         @Test
         void givenExistingGenreThatNoOneHavesIt_shoudlReturnNull() {
-            when(playlistService.findByGenre(genreTest)).thenReturn(null);
+            when(playlistRepository.findByGenre(genreTest.getName())).thenReturn(null);
 
-            assertNull(playlistService.findByGenre(genreTest));
+            assertNull(playlistRepository.findByGenre(genreTest.getName()));
         }
 
     }
