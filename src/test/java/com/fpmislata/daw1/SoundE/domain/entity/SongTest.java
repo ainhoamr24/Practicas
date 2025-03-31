@@ -33,7 +33,7 @@ class SongTest {
         song.setDateCreate(dateCreate);
         song.setGenres(genres);
         song.setArtist(artist);
-        song.setArtistImpPath(artistPath);
+        song.setArtistImgPath(artistPath);
 
         assertAll(
                 () -> assertEquals(song.getId(), id),
@@ -43,7 +43,7 @@ class SongTest {
                 () -> assertEquals(song.getDateCreate(), dateCreate),
                 () -> assertEquals(song.getGenres(), genres),
                 () -> assertEquals(song.getArtist(), artist),
-                () -> assertEquals(song.getArtistImpPath(), artistPath)
+                () -> assertEquals(song.getArtistImgPath(), artistPath)
         );
     }
 }

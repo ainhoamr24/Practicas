@@ -15,7 +15,7 @@ public class Song {
     private Long seconds;
     private String name;
     private String artist;
-    private String artistImpPath;
+    private String artistImgPath;
     private LocalDate dateCreate;
     private List<Genre> genres;
     private Duration duration;
@@ -23,13 +23,13 @@ public class Song {
     public Song() {
     }
 
-    public Song(Long id, String imgPath, Long seconds, String name, String artist, String artistImpPath, LocalDate dateCreate, List<Genre> genres, String artist, String artistPath) {
+    public Song(Long id, String imgPath, Long seconds, String name, String artist, String artistImgPath, LocalDate dateCreate, List<Genre> genres) {
         this.id = id;
         this.imgPath = imgPath;
         this.seconds = seconds;
         this.name = name;
         this.artist = artist;
-        this.artistImgPath = artistPath;
+        this.artistImgPath = artistImgPath;
         this.dateCreate = dateCreate;
         this.genres = genres;
         setDuration(seconds);
@@ -43,11 +43,11 @@ public class Song {
         this.artist = artist;
     }
 
-    public String getArtistImpPath() {
+    public String getArtistImgPath() {
         return artistImpPath;
     }
 
-    public void setArtistImpPath(String artistImpPath) {
+    public void setArtistImgPath(String artistImpPath) {
         this.artistImpPath = artistImpPath;
     }
 
