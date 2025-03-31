@@ -14,24 +14,24 @@ public class Song {
     @Column(nullable = false)
     private Long seconds;
     private String name;
+    private String artist;
+    private String artistImpPath;
     private LocalDate dateCreate;
     private List<Genre> genres;
     private Duration duration;
-    private String artist;
-    private String artistPath;
 
     public Song() {
     }
 
-    public Song(Long id, String imgPath, Long seconds, String name, LocalDate dateCreate, List<Genre> genres, String artist, String artistPath) {
+    public Song(Long id, String imgPath, Long seconds, String name, String artist, String artistImpPath, LocalDate dateCreate, List<Genre> genres, String artist, String artistPath) {
         this.id = id;
         this.imgPath = imgPath;
         this.seconds = seconds;
         this.name = name;
+        this.artist = artist;
+        this.artistImgPath = artistPath;
         this.dateCreate = dateCreate;
         this.genres = genres;
-        this.artist = artist;
-        this.artistPath = artistPath;
         setDuration(seconds);
     }
 
@@ -43,12 +43,12 @@ public class Song {
         this.artist = artist;
     }
 
-    public String getArtistPath() {
-        return artistPath;
+    public String getArtistImpPath() {
+        return artistImpPath;
     }
 
-    public void setArtistPath(String artistPath) {
-        this.artistPath = artistPath;
+    public void setArtistImpPath(String artistImpPath) {
+        this.artistImpPath = artistImpPath;
     }
 
     public Long getId() {
