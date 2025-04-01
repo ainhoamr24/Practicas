@@ -13,4 +13,5 @@ public interface GenreService {
     List<Genre> findByName(String name);
     List<Genre> getInPlaylist(Playlist playlist);
     List<Genre> getBySong(Song song);
+    List<Genre> getGenre(Song song);
 }

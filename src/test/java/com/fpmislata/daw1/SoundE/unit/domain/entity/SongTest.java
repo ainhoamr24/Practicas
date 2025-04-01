@@ -1,5 +1,7 @@
-package com.fpmislata.daw1.SoundE.domain.entity;
+package com.fpmislata.daw1.SoundE.unit.domain.entity;
 
+import com.fpmislata.daw1.SoundE.domain.entity.Genre;
+import com.fpmislata.daw1.SoundE.domain.entity.Song;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

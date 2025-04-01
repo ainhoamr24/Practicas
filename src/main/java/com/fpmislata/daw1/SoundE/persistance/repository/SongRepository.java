@@ -9,7 +9,5 @@ import java.util.List;
 public interface SongRepository {
     Song findById(Long id);
     List<Song> findByName(String name);
-    List<Song> findByGenre(Genre genre);
-    List<Song> getGenre(Genre genre);
-    List<Song> getInPlaylist(Playlist playlist);
+    List<Song> findByGenre(String name);
 }

@@ -1,4 +1,4 @@
-package com.fpmislata.daw1.SoundE.persistance.repostory.unit;
+package com.fpmislata.daw1.SoundE.unit.persistance.repostory;
 
 import com.fpmislata.daw1.SoundE.domain.entity.Genre;
 import com.fpmislata.daw1.SoundE.domain.entity.Playlist;

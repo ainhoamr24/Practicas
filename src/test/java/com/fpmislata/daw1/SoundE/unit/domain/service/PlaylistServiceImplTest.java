@@ -1,4 +1,4 @@
-package com.fpmislata.daw1.SoundE.domain.service.unit;
+package com.fpmislata.daw1.SoundE.unit.domain.service;
 
 import com.fpmislata.daw1.SoundE.domain.entity.Genre;
 import com.fpmislata.daw1.SoundE.domain.entity.Playlist;

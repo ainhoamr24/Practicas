@@ -10,4 +10,7 @@ public interface GenreRepository {
     Genre findById(Long id);
     List<Genre> findAll();
     List<Genre> findByName(String name);
+    List<Genre> getInPlaylist(Playlist playlist);
+    List<Genre> getBySong(Song song);
+    List<Genre> getGenre(Long id);
 }

@@ -39,5 +39,10 @@ public class GenreServiceImpl implements GenreService {
     @Override
     public List<Genre> getInPlaylist(Playlist playlist) {
         return genreRepository.getInPlaylist(playlist);
+    }    @Override
+    public List<Genre> getGenre(Song song) {
+        return genreRepository.getGenre(song.getId());
     }
+
+
 }

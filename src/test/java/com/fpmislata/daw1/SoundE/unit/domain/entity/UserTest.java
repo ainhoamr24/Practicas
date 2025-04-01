@@ -1,4 +1,4 @@
-package com.fpmislata.daw1.SoundE.domain.entity;
+package com.fpmislata.daw1.SoundE.unit.domain.entity;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
