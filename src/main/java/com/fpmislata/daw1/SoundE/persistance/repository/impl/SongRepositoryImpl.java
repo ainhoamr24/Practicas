@@ -26,7 +26,7 @@ public class SongRepositoryImpl implements SongRepository {
     }
 
     @Override
-    public List<Song> findByGenre(String name) {
-        return songDao.findByGenre(name);
+    public List<Song> findByGenre(Long id) {
+        return songDao.findByGenre(id);
     }
 }

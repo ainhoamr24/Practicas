@@ -44,11 +44,11 @@ public class Song {
     }
 
     public String getArtistImgPath() {
-        return artistImpPath;
+        return artistImgPath;
     }
 
-    public void setArtistImgPath(String artistImpPath) {
-        this.artistImpPath = artistImpPath;
+    public void setArtistImgPath(String artistImgPath) {
+        this.artistImgPath = artistImgPath;
     }
 
     public Long getId() {
@@ -127,6 +127,8 @@ public class Song {
                 ", name='" + name + '\'' +
                 ", dateCreate=" + dateCreate +
                 ", genres=" + genres +
+                ", artist='" + artist + '\'' +
+                ", artistImgPath=" + artistImgPath +
                 '}';
     }
 }
