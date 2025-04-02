@@ -12,11 +12,9 @@ import java.util.Set;
 
 public class PlaylistServiceImpl implements PlaylistService {
     private final PlaylistRepository playlistRepository;
-    private final SongRepository songRepository;
 
-    public PlaylistServiceImpl(PlaylistRepository playlistRepository, SongRepository songRepository) {
+    public PlaylistServiceImpl(PlaylistRepository playlistRepository) {
         this.playlistRepository = playlistRepository;
-        this.songRepository = songRepository;
     }
 
     @Override
