@@ -1,5 +1,6 @@
 package com.fpmislata.daw1.SoundE.persistance.dao.impl.jdbc.database;
 
+import com.fpmislata.daw1.SoundE.common.AppPropertiesReader;
 import lombok.extern.log4j.Log4j2;
 
 import java.sql.*;
@@ -25,9 +26,9 @@ public class DatabaseConnection {
     }
 
     private DatabaseConnection() {
-        URL = "jdbc:mysql://localhost:3306/sounde";
-        USER = "sounde";
-        PASSWORD = "sounde";
+        URL = AppPropertiesReader.getProperty("app.datasource.url");
+        USER = AppPropertiesReader.getProperty("app.datasource.user");
+        PASSWORD = AppPropertiesReader.getProperty("app.datasource.password");
 
         log.info("Estableciendo conexión con la base de datos...");
         try {
