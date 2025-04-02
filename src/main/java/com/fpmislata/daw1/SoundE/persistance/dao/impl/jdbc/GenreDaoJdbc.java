@@ -59,4 +59,32 @@ public class GenreDaoJdbc implements GenreDao {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public List<Genre> getGenreBySong(Song song) {
+        String sql = "SELECT g.* " +
+                "FROM tb_genre g " +
+                "INNER JOIN tb_songGenres sg ON g.id_genre = sg.sgr_id_genre " +
+                "WHERE sg.sgr_id_song = ?";
+        List<Object> parameters = List.of(song.getId());
+        try (ResultSet rs = databaseConnection.executeSql(sql, parameters)) {
+            return genreRowMapper.map(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Genre> getGenreByPlaylist(Playlist playlist) {
+        String sql = "SELECT DISTINCT g.* FROM tb_genre g " +
+                "INNER JOIN tb_songGenres sg ON g.id_genre = sg.sgr_id_genre " +
+                "INNER JOIN tb_playlistSong ps ON sg.sgr_id_song = ps.pls_id_song " +
+                "WHERE ps.pls_id_playlist = ?";
+        List<Object> parameters = List.of(playlist.getId());
+        try (ResultSet rs = databaseConnection.executeSql(sql, parameters)) {
+            return genreRowMapper.map(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

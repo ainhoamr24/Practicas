@@ -10,4 +10,6 @@ public interface GenreDao {
     Genre findById(Long id);
     List<Genre> findAll();
     List<Genre> findByName(String name);
+    List<Genre> getGenreBySong(Song song);
+    List<Genre> getGenreByPlaylist(Playlist playlist);
 }

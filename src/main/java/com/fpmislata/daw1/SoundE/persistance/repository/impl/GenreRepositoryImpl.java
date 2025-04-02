@@ -28,4 +28,14 @@ public class GenreRepositoryImpl implements GenreRepository {
     public List<Genre> findByName(String name) {
         return genreDao.findByName(name);
     }
+
+    @Override
+    public List<Genre> getGenreBySong(Song song) {
+        return genreDao.getGenreBySong(song);
+    }
+
+    @Override
+    public List<Genre> getGenreByPlaylist(Playlist playlist) {
+        return genreDao.getGenreByPlaylist(playlist);
+    }
 }
