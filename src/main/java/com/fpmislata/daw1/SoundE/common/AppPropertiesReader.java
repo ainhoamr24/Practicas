@@ -15,7 +15,7 @@ public class AppPropertiesReader {
     static {
         loadProperties("application.properties");
 
-        String activeProfile = getProperty("provfile.active");
+        String activeProfile = getProperty("spring.profiles.active");
 
         if(activeProfile != null) {
             log.info("Perfil activo: " + activeProfile);
