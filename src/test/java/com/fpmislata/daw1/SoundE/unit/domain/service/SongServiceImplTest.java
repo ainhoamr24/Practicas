@@ -55,6 +55,15 @@ public class SongServiceImplTest {
         }
     }
 
+    @Test
+    void findAll() {
+        when(songService.findAll()).thenReturn(List.of(SONG1));
+
+        List<Song> songs = songService.findAll();
+
+        assertEquals(songs, List.of(SONG1));
+    }
+
     @Nested
     class FindByName {
         @Test

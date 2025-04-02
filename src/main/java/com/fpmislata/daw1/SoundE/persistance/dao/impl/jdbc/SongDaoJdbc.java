@@ -1,5 +1,6 @@
 package com.fpmislata.daw1.SoundE.persistance.dao.impl.jdbc;
 
+import com.fpmislata.daw1.SoundE.domain.entity.Playlist;
 import com.fpmislata.daw1.SoundE.domain.entity.Song;
 import com.fpmislata.daw1.SoundE.persistance.dao.SongDao;
 import com.fpmislata.daw1.SoundE.persistance.dao.impl.jdbc.database.DatabaseConnection;
@@ -24,6 +25,18 @@ public class SongDaoJdbc implements SongDao {
         List<Object> parameters = List.of(id);
         try (ResultSet rs = databaseConnection.executeSql(sql, parameters)) {
             return songRowMapper.map(rs).get(0);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Song> findAll() {
+        String sql = "SELECT * " +
+                "FROM tb_song s ";
+
+        try (ResultSet rs = databaseConnection.executeSql(sql,List.of())) {
+            return songRowMapper.map(rs);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

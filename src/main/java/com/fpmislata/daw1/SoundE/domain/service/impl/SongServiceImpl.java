@@ -23,6 +23,11 @@ public class SongServiceImpl implements SongService {
     }
 
     @Override
+    public List<Song> findAll() {
+        return songRepository.findAll();
+    }
+
+    @Override
     public List<Song> findByName(String name) {
         return songRepository.findByName(name);
     }

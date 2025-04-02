@@ -21,6 +21,12 @@ public class SongRepositoryImpl implements SongRepository {
     }
 
     @Override
+    public List<Song> findAll() {
+        return songDao.findAll();
+    }
+
+
+    @Override
     public List<Song> findByName(String name) {
         return songDao.findByName(name);
     }
