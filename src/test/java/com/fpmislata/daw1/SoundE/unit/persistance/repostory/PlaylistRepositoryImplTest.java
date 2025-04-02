@@ -116,14 +116,4 @@ public class PlaylistRepositoryImplTest {
         }
 
     }
-
-    @Test
-    void givenPlaylistWitAttributeSongsVoid_shoudlReturnPlaylistWithSongs() {
-        Playlist playlistTest = new Playlist(1L,"Vowels","/images/playlist/hunny.jpg","HUNNY","/images/artits/playlist",LocalDate.parse("2020-03-12"),null);
-        when(playlistRepository.getPlaylistWithSongs(playlistTest.getId())).thenReturn(PLAYLIST);
-
-        Playlist playlist = playlistRepository.getPlaylistWithSongs(playlistTest.getId());
-
-        assertEquals(playlist, PLAYLIST);
-    }
 }

@@ -6,5 +6,4 @@ import java.util.List;
 
 public interface PlaylistSongDao {
     List<Playlist> findByGenre(String name);
-    Playlist getPlaylistWithSongs(Long id);
 }

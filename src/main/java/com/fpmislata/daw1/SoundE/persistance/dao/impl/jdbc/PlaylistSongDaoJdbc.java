@@ -3,7 +3,7 @@ package com.fpmislata.daw1.SoundE.persistance.dao.impl.jdbc;
 import com.fpmislata.daw1.SoundE.domain.entity.Playlist;
 import com.fpmislata.daw1.SoundE.persistance.dao.PlaylistSongDao;
 import com.fpmislata.daw1.SoundE.persistance.dao.impl.jdbc.database.DatabaseConnection;
-import com.fpmislata.daw1.SoundE.persistance.dao.impl.jdbc.rowmapper.PlaylistSongRowMapper;
+import com.fpmislata.daw1.SoundE.persistance.dao.impl.jdbc.rowmapper.PlaylistRowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,11 +11,11 @@ import java.util.List;
 
 public class PlaylistSongDaoJdbc implements PlaylistSongDao {
     private final DatabaseConnection databaseConnection;
-    private final PlaylistSongRowMapper playlistSongRowMapper;
+    private final PlaylistRowMapper playlistRowMapper;
 
     public PlaylistSongDaoJdbc() {
         this.databaseConnection = DatabaseConnection.getInstance();
-        this.playlistSongRowMapper = new PlaylistSongRowMapper();
+        this.playlistRowMapper = new PlaylistRowMapper();
     }
 
     @Override
@@ -31,24 +31,7 @@ public class PlaylistSongDaoJdbc implements PlaylistSongDao {
         List<Object> parameters = List.of(name);
 
         try(ResultSet rs = databaseConnection.executeSql(sql, parameters)) {
-            return playlistSongRowMapper.map(rs);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public Playlist getPlaylistWithSongs(Long id) {
-        String sql = "SELECT * " +
-                "FROM tb_song s " +
-                "INNER JOIN tb_playlistsong ps ON s.id_song = ps.pls_id_song " +
-                "INNER JOIN tb_playlist p ON ps.pls_id_playlist = p.id_playlist " +
-                "WHERE p.id_playlist = ?";
-
-        List<Object> parameters = List.of(id);
-
-        try (ResultSet rs = databaseConnection.executeSql(sql,parameters)) {
-            return playlistSongRowMapper.map(rs).get(0);
+            return playlistRowMapper.map(rs);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

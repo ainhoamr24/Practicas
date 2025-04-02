@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.fpmislata.daw1</groupId>
     <artifactId>SoundE</artifactId>
-    <username>SoundE</username>
+    <name>SoundE</name>
     <version>0.6</version>
     <description>SoundE</description>
     <properties>
@@ -122,6 +122,19 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <!-- JUnit 5 requires Surefire version 2.22.0 or higher -->
                 <version>2.22.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.5.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
