@@ -10,4 +10,5 @@ public interface SongRepository {
     Song findById(Long id);
     List<Song> findByName(String name);
     List<Song> findByGenre(Long id);
+    List<Song> getSongsByPlaylist(Long id);
 }

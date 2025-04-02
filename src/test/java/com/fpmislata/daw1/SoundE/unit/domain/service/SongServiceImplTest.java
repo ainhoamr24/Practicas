@@ -1,6 +1,7 @@
 package com.fpmislata.daw1.SoundE.unit.domain.service;
 
 import com.fpmislata.daw1.SoundE.domain.entity.Genre;
+import com.fpmislata.daw1.SoundE.domain.entity.Playlist;
 import com.fpmislata.daw1.SoundE.domain.entity.Song;
 import com.fpmislata.daw1.SoundE.domain.service.impl.SongServiceImpl;
 import com.fpmislata.daw1.SoundE.persistance.repository.SongRepository;
@@ -24,6 +25,8 @@ public class SongServiceImplTest {
     private final Genre GENRE = new Genre(1L,"Pop","");
     private final Song SONG1 = new Song(1L, "/images/songs/vowels", 230L, "Song1", "Deiber", "/uploads/deiber",  LocalDate.parse("2020-03-12"), null);
     private final Song SONG2 = new Song(2L, "/images/songs/vowels", 230L, "Song2", "Deiber", "/uploads/deiber",  LocalDate.parse("2020-03-12"), List.of(GENRE));
+    private final List<Song> SONGS = List.of(new Song(1L,"/images/songs/vowels",230L,"Song1", "Deiber", "/uploads/deiber", LocalDate.parse("2020-03-12"),null), new Song(2L,"/images/songs/vowels",230L,"Song1", "Deiber", "/uploads/deiber",LocalDate.parse("2020-03-12"),List.of(GENRE)));
+    private final Playlist PLAYLIST = new Playlist(1L,"Vowels","/images/playlist/hunny.jpg","HUNNY","/images/artits/playlist",LocalDate.parse("2020-03-12"),SONGS);
 
     private Genre genreTest;
 
@@ -102,6 +105,26 @@ public class SongServiceImplTest {
             when(songService.findByGenre(genreTest)).thenReturn(null);
 
             assertNull(songService.findByGenre(genreTest));
+        }
+    }
+
+    @Nested
+    class GetSongsByPlaylist {
+
+        @Test
+        void givenAExistingPlaylist_shouldReturnASongThatHaveIt() {
+            when(songService.getSongsByPlaylist(PLAYLIST)).thenReturn(List.of(SONG1));
+
+            List<Song> songs = songService.getSongsByPlaylist(PLAYLIST);
+
+            assertEquals(songs,List.of(SONG1));
+        }
+
+        @Test
+        void givenExistingPlaylistThatNoOneHavesIt_shouldReturnNull() {
+            when(songService.getSongsByPlaylist(PLAYLIST)).thenReturn(null);
+
+            assertNull(songService.getSongsByPlaylist(PLAYLIST));
         }
     }
 }

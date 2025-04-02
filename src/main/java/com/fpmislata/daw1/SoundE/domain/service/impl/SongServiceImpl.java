@@ -31,4 +31,9 @@ public class SongServiceImpl implements SongService {
     public List<Song> findByGenre(Genre genre) {
         return songRepository.findByGenre(genre.getId());
     }
+
+    @Override
+    public List<Song> getSongsByPlaylist(Playlist playlist) {
+        return songRepository.getSongsByPlaylist(playlist.getId());
+    }
 }

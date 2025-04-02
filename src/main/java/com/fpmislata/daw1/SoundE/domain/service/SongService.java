@@ -10,4 +10,5 @@ public interface SongService {
     Song findById(Long id);
     List<Song> findByName(String name);
     List<Song> findByGenre(Genre genre);
+    List<Song> getSongsByPlaylist(Playlist playlist);
 }

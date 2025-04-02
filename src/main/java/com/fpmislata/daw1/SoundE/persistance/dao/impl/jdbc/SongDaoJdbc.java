@@ -45,7 +45,21 @@ public class SongDaoJdbc implements SongDao {
         String sql = "SELECT * " +
                 "FROM tb_song s " +
                 "INNER JOIN tb_songGenres sg ON s.id_song = sg.sgr_id_song " +
-                "WHERE sg.sgr_id_genre = LIKE ?";
+                "WHERE sg.sgr_id_genre = ?";
+        List<Object> parameters = List.of(id);
+        try (ResultSet rs = databaseConnection.executeSql(sql, parameters)) {
+            return songRowMapper.map(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Song> getSongsByPlaylist(Long id) {
+        String sql = "SELECT * " +
+                "FROM tb_song s " +
+                "INNER JOIN tb_playlistSong ps ON s.id_song = ps.pls_id_song " +
+                "WHERE ps.pls_id_playlist = ?";
         List<Object> parameters = List.of(id);
         try (ResultSet rs = databaseConnection.executeSql(sql, parameters)) {
             return songRowMapper.map(rs);

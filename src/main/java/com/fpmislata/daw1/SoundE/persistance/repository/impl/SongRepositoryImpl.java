@@ -29,4 +29,9 @@ public class SongRepositoryImpl implements SongRepository {
     public List<Song> findByGenre(Long id) {
         return songDao.findByGenre(id);
     }
+
+    @Override
+    public List<Song> getSongsByPlaylist(Long id) {
+        return songDao.getSongsByPlaylist(id);
+    }
 }
