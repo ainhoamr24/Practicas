@@ -1,6 +1,5 @@
 package com.fpmislata.daw1.SoundE.persistance.dao.impl.jdbc.rowmapper;
 
-import com.fpmislata.daw1.SoundE.domain.entity.Genre;
 import com.fpmislata.daw1.SoundE.domain.entity.Song;
 
 import java.sql.ResultSet;
@@ -10,7 +9,7 @@ public class SongRowMapper extends RowMapper<Song> {
     @Override
     public Song mapItem(ResultSet rs) throws SQLException {
         Song song = new Song();
-        song.setId(rs.getLong("id_genre"));
+        song.setId(rs.getLong("id_song"));
         song.setName(rs.getString("name"));
         song.setImgPath(rs.getString("imgPath"));
         song.setArtist(rs.getString("artist"));
