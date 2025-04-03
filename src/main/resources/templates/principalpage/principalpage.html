@@ -14,10 +14,12 @@
 <div class="header-hr"></div>
 <main>
     <section class="recents"> <!--Esta seccion es un grid -->
-        <div class="recents__container" th:each="recent : ${recents}">
-            <img class="recents__container-picture" th:src="${recent.imgPath}" th:alt="${recent.name}">
-            <p class="recents__container-songname" th:text="${recent.name}"></p>
-        </div>
+        <a th:each="recent : ${recents}" th:href="${recent.url}">
+            <div class="recents__container">
+                <img class="recents__container-picture" th:src="${recent.imgPath}" th:alt="${recent.name}">
+                <p class="recents__container-songname" th:text="${recent.name}"></p>
+            </div>
+        </a>
     </section>
 
     <section class="music-container" th:each="entry : ${mediaByGenre}">
@@ -25,10 +27,13 @@
             <h1 class="music-container__header-title" th:text="${entry.key}"></h1>
         </header>
         <article class="music-container__scroll">
-            <div class="music-container__scroll__song" th:each="media : ${entry.value}">
-                <img th:src="${media.imgPath}" th:alt="${media.name}" class="music-container__scroll__song-img">
-                <p class="music-container__scroll__song-subtitle" th:text="${media.name}"></p>
-            </div>
+            <a th:each="media : ${entry.value}" th:href="${media.url}">
+                <div class="music-container__scroll__song" >
+                    <img th:src="${media.imgPath}" th:alt="${media.name}" class="music-container__scroll__song-img">
+                    <p class="music-container__scroll__song-subtitle" th:text="${media.type}"></p>
+                    <p class="" th:text="${media.name}"></p>
+                </div>
+            </a>
         </article>
     </section>
     <footer th:replace="~{fragments/footer :: footer}"></footer>

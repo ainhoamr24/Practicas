@@ -4,6 +4,7 @@ public class MediaItem {
     private String name;
     private String url;
     private String imgPath;
+    private String type;
 
     public MediaItem(){}
 
@@ -29,5 +30,13 @@ public class MediaItem {
 
     public void setImgPath(String imgPath) {
         this.imgPath = imgPath;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

@@ -1,3 +1,14 @@
+a {
+    color: white;
+    text-decoration: none;
+}
+
+p.music-container__scroll__song-subtitle {
+    font-size: 14px;
+    color: #c7c7c7cf;
+    padding-bottom: 3px;
+}
+
 .recents {
     margin: var(--margin-sections);
     display: grid;
@@ -34,6 +45,12 @@
     gap: 20px;
     overflow: auto;
     scrollbar-width: none;
+}
+
+.music-container__scroll p {
+    max-width: 150px;
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 .music-container img {
@@ -76,7 +93,8 @@
 
     .music-container__scroll__song {
         position: relative;
-        padding: 10px 5px 40px 5px;
+        padding: 10px 5px 50px 5px;
+        max-height: 210px;
     }
 
     .music-container__scroll__song::after {
