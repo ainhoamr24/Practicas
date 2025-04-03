@@ -71,6 +71,18 @@ h2 + p {
     margin-top: 20px;
 }
 
+.image {
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
+    margin-bottom: 10%;
+}
+
+.song-cover {
+    width: 70px;
+    height: 70px;
+}
+
 .song h2 {
     font-size: 1.4em;
 }
@@ -79,6 +91,28 @@ h2 + p {
     font-size: 1em;
     color: #aaa9a9;
     margin: 2px 0 10px;
+}
+
+.tracklist {
+    scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 961px) {
+
+    .play-button{
+        margin-left: 250px;
+    }
+
+    .tracklist {
+        margin-top: 4%;
+    }
+
+    .image {
+        margin-bottom: 1%;
+        gap: 1%;
+    }
 }
 
 @media (max-width: 960px) {
@@ -100,7 +134,7 @@ h2 + p {
         }
 
         .play-button{
-            margin-left: 245px;
+            margin-left: 250px;
             margin-top: -60px;
             width: 40px;
             height: 40px;
@@ -108,8 +142,6 @@ h2 + p {
         }
 
         .tracklist {
-            display: flex;
-            flex-direction: column;
             margin-top: -375px;
             margin-left: 65%;
             width: 200px;
@@ -142,4 +174,7 @@ h2 + p {
         margin-left: 10px;
     }
 
+    .play-button{
+        margin-left: 280px;
+    }
 }

@@ -28,7 +28,7 @@ public class PlaylistController {
         this.songService = SongIoc.createService();
     }
 
-    @GetMapping("/playlist")
+    @GetMapping("/playlist/{id}")
     public String getPlaylist(Model model, @PathVariable(value = "id") Long id) {
         Playlist playlist = playlistService.findById(id);
         model.addAttribute("playlist", playlist);

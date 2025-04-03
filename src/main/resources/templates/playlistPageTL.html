@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <meta username="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Álbum Musical</title>
-  <link rel="stylesheet" href="./css/Common.css">
-  <link rel="stylesheet" href="./css/PlaylistPage.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${playlist.name}">Álbum Musical</title>
+  <link rel="stylesheet" href="/css/Common.css">
+  <link rel="stylesheet" href="/css/PlaylistPage.css">
 </head>
 <body>
 <header>
@@ -20,27 +20,29 @@
 <main>
   <div class="album-container">
     <div class="album-header">
-      <img th:src="${playlist.imgPath}" th:alt="${playlist.name}" class="album-cover">
+      <img th:src="|/uploads/Playlist/${playlist.imgPath}|" alt="Portada del álbum" class="album-cover">
       <div class="album-info">
-        <h1><span th:text="${playlist.name}"></span></h1>
+        <h1 th:text="${playlist.name}">Midnight Memories</h1>
         <div class="artist-info">
-          <img src="${playlist.artistImgPath}" alt="Foto del artista" class="artist-photo">
-          <p th:text="${user.username}" th:text="/ ${playlist.dateCreate}"></p>
+          <img src="/img/icons/icon.svg" alt="Foto del artista" class="artist-photo">
+          <p th:text="${playlist.artist} + ' | ' + ${playlist.dateCreate}">One Direction | 2013</p>
         </div>
       </div>
       <button class="play-button">▶</button>
     </div>
     <section class="tracklist">
-      <article class="track" th:each="song : ${songs}">
-        <h2><span th:text="${song.username}"></span></h2>
-        <h3><span th:text="${song.artistImgPath}"></span></h3>
-        <p><span th:text="${song.artist}"></span></p>
-      </article>
+      <div class="image" th:each="cancion : ${playlist.songs}">
+        <img th:src="|/uploads/Song/${song.imgPath}|" alt="Song" class="song-cover">
+        <article class="song">
+          <h2 th:text="${song.name}">Título de la canción</h2>
+          <p th:text="${song.artist}">Nombre del artista</p>
+        </article>
+      </div>
     </section>
   </div>
 </main>
 <footer>
-  <img src="/img/icons/search.svg" alt="" srcset="">
+  <img src="/img/icons/search.svg" alt="">
   <img src="/img/icons/icon.svg" alt="">
   <img src="/img/icons/home.svg">
 </footer>
