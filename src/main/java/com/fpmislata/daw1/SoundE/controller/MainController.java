@@ -4,6 +4,8 @@ import com.fpmislata.daw1.SoundE.common.container.GenreIoc;
 import com.fpmislata.daw1.SoundE.common.container.PlaylistIoc;
 import com.fpmislata.daw1.SoundE.common.container.SongIoc;
 import com.fpmislata.daw1.SoundE.controller.components.MediaItem;
+import com.fpmislata.daw1.SoundE.controller.components.PlaylistMediaItemMapper;
+import com.fpmislata.daw1.SoundE.controller.components.SongMediaItemMapper;
 import com.fpmislata.daw1.SoundE.domain.entity.Genre;
 import com.fpmislata.daw1.SoundE.domain.service.GenreService;
 import com.fpmislata.daw1.SoundE.domain.service.PlaylistService;
@@ -31,23 +33,9 @@ public class MainController {
     @SuppressWarnings("SameReturnValue")
     @GetMapping("/")
     public String index(Model model) {
-        List<MediaItem> recentsPlaylists = playlistService.findAll().stream().map(
-                playlist -> {
-                    MediaItem media = new MediaItem();
-                    media.setName(playlist.getName());
-                    media.setUrl("playlist/" + playlist.getId());
-                    media.setImgPath("/files/playlist/" + (playlist.getImgPath() != null ? playlist.getImgPath() : "example.jpg"));
-                    return media;
-                }).limit(4).toList();
+        List<MediaItem> recentsPlaylists = playlistService.findAll().stream().map(PlaylistMediaItemMapper::map).limit(4).toList();
 
-        List<MediaItem> recentsSongs = songService.findAll().stream().map(
-                song -> {
-                    MediaItem media = new MediaItem();
-                    media.setName(song.getName());
-                    media.setUrl("song/" + song.getId());
-                    media.setImgPath("/files/song/" + (song.getImgPath() != null ? song.getImgPath() : "example.jpg"));
-                    return media;
-                }).limit(4).toList();
+        List<MediaItem> recentsSongs = songService.findAll().stream().map(SongMediaItemMapper::map).limit(4).toList();
 
         List<MediaItem> recents = new ArrayList<>();
         recents.addAll(recentsPlaylists);
@@ -61,25 +49,9 @@ public class MainController {
         Map<String, List<MediaItem>> mediaByGenre = new HashMap<>();
 
         for (Genre genre : genres) {
-            List<MediaItem> playlists = playlistService.findByGenre(genre).stream().map(
-                    playlist -> {
-                        MediaItem media = new MediaItem();
-                        media.setName(playlist.getName());
-                        media.setType("Playlist");
-                        media.setUrl("playlist/" + playlist.getId());
-                        media.setImgPath("/files/playlist/" + (playlist.getImgPath() != null ? playlist.getImgPath() : "example.jpg"));
-                        return media;
-                    }).toList();
+            List<MediaItem> playlists = playlistService.findByGenre(genre).stream().map(PlaylistMediaItemMapper::map).toList();
 
-            List<MediaItem> songs = songService.findByGenre(genre).stream().map(
-                    song -> {
-                        MediaItem media = new MediaItem();
-                        media.setName(song.getName());
-                        media.setType("Song");
-                        media.setUrl("song/" + song.getId());
-                        media.setImgPath("/files/song/" + (song.getImgPath() != null ? song.getImgPath() : "example.jpg"));
-                        return media;
-                    }).toList();
+            List<MediaItem> songs = songService.findByGenre(genre).stream().map(SongMediaItemMapper::map).toList();
 
             List<MediaItem> mediaItems = new ArrayList<>();
             mediaItems.addAll(playlists);
