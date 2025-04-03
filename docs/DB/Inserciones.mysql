@@ -99,11 +99,7 @@ insert into tb_playlistsong(pls_id_playlist, pls_id_song) values
     (8, 43),
     (8, 44),
     (8, 45),
-    (8, 46),
-    (8, 47),
-    (8, 48),
-    (8, 49),
-    (8, 50);
+    (8, 46);
 
 insert into tb_genre(name, dateCreate, imgPath) values
     ('Trap', curdate(), 'trap.jpg'),
@@ -113,8 +109,8 @@ insert into tb_genre(name, dateCreate, imgPath) values
     ('Flamenco', curdate(), ''),
     ('Disco', curdate(), ''),
     ('Electropop', curdate(), ''),
-    ('rock', curdate(), ''),
-    ('hip hop', curdate(), ''),
+    ('Rock', curdate(), ''),
+    ('Hip Hop', curdate(), ''),
     ('Electronica', curdate(), ''),
     ('Discos', curdate(), ''),
     ('Alternativo', curdate(), ''),
