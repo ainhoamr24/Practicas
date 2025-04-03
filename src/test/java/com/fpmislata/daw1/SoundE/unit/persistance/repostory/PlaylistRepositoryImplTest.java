@@ -50,13 +50,15 @@ public class PlaylistRepositoryImplTest {
         void nonExistingId_shouldReturnNull() {
             when(playlistDao.findById(2L)).thenReturn(null);
 
-            assertNull(playlistRepository.findById(2L));
+            Playlist playlist = playlistRepository.findById(2L);
+
+            assertNull(playlist);
         }
     }
 
     @Test
     void findAll() {
-        when(playlistRepository.findAll()).thenReturn(List.of(PLAYLIST));
+        when(playlistDao.findAll()).thenReturn(List.of(PLAYLIST));
 
         List<Playlist> playlists = playlistRepository.findAll();
 
@@ -67,7 +69,7 @@ public class PlaylistRepositoryImplTest {
     class FindByName {
         @Test
         void givenExistingName_shouldReturnAPlaylistWithThatName() {
-            when(playlistRepository.findByName("Vowels")).thenReturn(List.of(PLAYLIST));
+            when(playlistDao.findByName("Vowels")).thenReturn(List.of(PLAYLIST));
 
             List<Playlist> playlists = playlistRepository.findByName("Vowels");
 
@@ -76,7 +78,7 @@ public class PlaylistRepositoryImplTest {
 
         @Test
         void givenPartOfAName_shouldReturnAPlaylistWithThatName() {
-            when(playlistRepository.findByName("Vow")).thenReturn(List.of(PLAYLIST));
+            when(playlistDao.findByName("Vow")).thenReturn(List.of(PLAYLIST));
 
             List<Playlist> playlists = playlistRepository.findByName("Vow");
 
@@ -85,9 +87,11 @@ public class PlaylistRepositoryImplTest {
 
         @Test
         void givenNonExistingName_shouldReturnNull() {
-            when(playlistRepository.findByName("pepe")).thenReturn(null);
+            when(playlistDao.findByName("pepe")).thenReturn(null);
 
-            assertNull(playlistRepository.findByName("pepe"));
+            List<Playlist> playlists = playlistRepository.findByName("pepe");
+
+            assertNull(playlists);
         }
     }
 
@@ -101,7 +105,7 @@ public class PlaylistRepositoryImplTest {
 
         @Test
         void givenAExistingGenre_shoudlReturnAPlaylistThatHaveIt() {
-            when(playlistRepository.findByGenre(GENRE.getName())).thenReturn(List.of(PLAYLIST));
+            when(playlistSongDao.findByGenre(GENRE.getName())).thenReturn(List.of(PLAYLIST));
 
             List<Playlist> playlists = playlistRepository.findByGenre(GENRE.getName());
 
@@ -110,9 +114,11 @@ public class PlaylistRepositoryImplTest {
 
         @Test
         void givenExistingGenreThatNoOneHavesIt_shoudlReturnNull() {
-            when(playlistRepository.findByGenre(genreTest.getName())).thenReturn(null);
+            when(playlistSongDao.findByGenre(genreTest.getName())).thenReturn(null);
 
-            assertNull(playlistRepository.findByGenre(genreTest.getName()));
+            List<Playlist> playlists = playlistRepository.findByGenre(genreTest.getName());
+
+            assertNull(playlists);
         }
 
     }
