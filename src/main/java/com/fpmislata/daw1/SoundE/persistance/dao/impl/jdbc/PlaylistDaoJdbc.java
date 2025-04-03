@@ -26,7 +26,7 @@ public class PlaylistDaoJdbc implements PlaylistDao {
                 "LEFT JOIN tb_song s ON ps.pls_id_song = s.id_song " +
                 "WHERE p.id_playlist = ?";
 
-        List<Object> parameters = List.of(1L);
+        List<Object> parameters = List.of(id);
 
         try (ResultSet rs = databaseConnection.executeSql(sql, parameters)) {
             return playlistRowMapper.map(rs).get(0);
