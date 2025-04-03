@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/PrincipalPage.css">
+    <link rel="stylesheet" href="/css/Common.css">
+    <title>SoundE</title>
+</head>
+
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<div class="header-hr"></div>
+<main>
+    <section class="recents"> <!--Esta seccion es un grid -->
+        <div class="recents__container" th:each="recent : ${recents}">
+            <img class="recents__container-picture" th:src="${recent.imgPath}" th:alt="${recent.name}">
+            <p class="recents__container-songname" th:text="${recent.name}"></p>
+        </div>
+    </section>
+
+    <section class="music-container" th:each="entry : ${mediaByGenre}">
+        <header class="music-container__header">
+            <h1 class="music-container__header-title" th:text="${entry.key}"></h1>
+        </header>
+        <article class="music-container__scroll">
+            <div class="music-container__scroll__song" th:each="media : ${entry.value}">
+                <img th:src="${media.imgPath}" th:alt="${media.name}" class="music-container__scroll__song-img">
+                <p class="music-container__scroll__song-subtitle" th:text="${media.name}"></p>
+            </div>
+        </article>
+    </section>
+    <footer th:replace="~{fragments/footer :: footer}"></footer>
+</main>
+</body>
+</html>

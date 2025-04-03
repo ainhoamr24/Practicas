@@ -1,5 +1,6 @@
 package com.fpmislata.daw1.SoundE.controller;
 
+import com.fpmislata.daw1.SoundE.common.AppPropertiesReader;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -16,10 +17,10 @@ import java.nio.file.Paths;
 
 @RestController
 public class FilesController {
-    @Value("${files.directory}")
-    private String filesDirectory;
+    private final String filesDirectory;
 
     private FilesController() {
+        this.filesDirectory = AppPropertiesReader.getProperty("files.directory");
     }
 
     @GetMapping("/files/**")

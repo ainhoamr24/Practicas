@@ -27,7 +27,7 @@ public class DatabaseConnection {
 
     private DatabaseConnection() {
         URL = AppPropertiesReader.getProperty("app.datasource.url");
-        USER = AppPropertiesReader.getProperty("app.datasource.user");
+        USER = AppPropertiesReader.getProperty("app.datasource.username");
         PASSWORD = AppPropertiesReader.getProperty("app.datasource.password");
 
         log.info("Estableciendo conexión con la base de datos...");
