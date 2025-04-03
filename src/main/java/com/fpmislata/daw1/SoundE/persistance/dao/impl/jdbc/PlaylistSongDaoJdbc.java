@@ -20,7 +20,7 @@ public class PlaylistSongDaoJdbc implements PlaylistSongDao {
 
     @Override
     public List<Playlist> findByGenre(String name) {
-        String sql = "SELECT p.id_playlist, p.name, p.dateCreate, p.imgPath, p.artist, p.artistImgPath " +
+        String sql = "SELECT distinct(p.id_playlist), p.name, p.dateCreate, p.imgPath, p.artist, p.artistImgPath " +
                 "FROM tb_playlist p " +
                 "INNER JOIN tb_playlistsong ps ON p.id_playlist = ps.pls_id_playlist " +
                 "INNER JOIN tb_song s ON ps.pls_id_song = s.id_song " +
