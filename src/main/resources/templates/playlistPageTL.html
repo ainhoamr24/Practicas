@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta username="viewport" content="width=device-width, initial-scale=1.0">
   <title>Álbum Musical</title>
-  <link rel="stylesheet" href="./Common.css">
-  <link rel="stylesheet" href="./PlaylistPage.css">
+  <link rel="stylesheet" href="./css/Common.css">
+  <link rel="stylesheet" href="./css/PlaylistPage.css">
 </head>
 <body>
 <header>
@@ -20,18 +20,21 @@
 <main>
   <div class="album-container">
     <div class="album-header">
-      <img th:src="${playlist.imgPath}" th:alt="${playlist.username}" class="album-cover">
-      <h1><span th:text="${playlist.username}"></span></h1>
-      <div class="artist-info">
-        <img src="${playlist.artistImgPath}" alt="Foto del artista" class="artist-photo">
-        <p th:text="${user.username}" th:text="/ ${playlist.dateCreate}"></p>
+      <img th:src="${playlist.imgPath}" th:alt="${playlist.name}" class="album-cover">
+      <div class="album-info">
+        <h1><span th:text="${playlist.name}"></span></h1>
+        <div class="artist-info">
+          <img src="${playlist.artistImgPath}" alt="Foto del artista" class="artist-photo">
+          <p th:text="${user.username}" th:text="/ ${playlist.dateCreate}"></p>
+        </div>
       </div>
       <button class="play-button">▶</button>
     </div>
     <section class="tracklist">
       <article class="track" th:each="song : ${songs}">
-        <p span th:text="${song.username}"></p>
+        <h2><span th:text="${song.username}"></span></h2>
         <h3><span th:text="${song.artistImgPath}"></span></h3>
+        <p><span th:text="${song.artist}"></span></p>
       </article>
     </section>
   </div>
