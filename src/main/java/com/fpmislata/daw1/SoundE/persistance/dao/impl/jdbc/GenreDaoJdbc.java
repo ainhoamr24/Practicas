@@ -24,8 +24,6 @@ public class GenreDaoJdbc implements GenreDao {
     public Genre findById(Long id) {
         String sql = "SELECT * " +
                 "FROM tb_genre g " +
-                "LEFT JOIN tb_songGenres sg ON g.id_genre = sg.sgr_id_genre " +
-                "LEFT JOIN tb_song s ON sg.sgr_id_song = s.id_song " +
                 "WHERE g.id_genre = ?";
         List<Object> parameters = List.of(id);
         try (ResultSet rs = databaseConnection.executeSql(sql, parameters)) {
@@ -49,8 +47,6 @@ public class GenreDaoJdbc implements GenreDao {
     public List<Genre> findByName(String name) {
         String sql = "SELECT * " +
                 "FROM tb_genre g " +
-                "LEFT JOIN tb_songGenres sg ON g.id_genre = sg.sgr_id_genre " +
-                "LEFT JOIN tb_song s ON sg.sgr_id_song = s.id_song " +
                 "WHERE g.name LIKE ?";
         List<Object> parameters = List.of(name);
         try (ResultSet rs = databaseConnection.executeSql(sql, parameters)) {

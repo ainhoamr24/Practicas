@@ -22,8 +22,6 @@ public class PlaylistDaoJdbc implements PlaylistDao {
     public Playlist findById(Long id) {
         String sql =  "SELECT * " +
                 "FROM tb_playlist p " +
-                "LEFT JOIN tb_playlistsong ps ON p.id_playlist = ps.pls_id_playlist " +
-                "LEFT JOIN tb_song s ON ps.pls_id_song = s.id_song " +
                 "WHERE p.id_playlist = ?";
 
         List<Object> parameters = List.of(id);
@@ -51,8 +49,6 @@ public class PlaylistDaoJdbc implements PlaylistDao {
     public List<Playlist> findByName(String name) {
         String sql = "SELECT * " +
                 "FROM tb_playlist p " +
-                "LEFT JOIN tb_playlistsong ps ON p.id_playlist = ps.pls_id_playlist " +
-                "LEFT JOIN tb_song s ON ps.pls_id_song = s.id_song " +
                 "WHERE p.name like ?";
 
         List<Object> parameters = List.of(name);
