@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Álbum Musical</title>
+    <link rel="stylesheet" href="/css/Common.css">
+    <link rel="stylesheet" href="/css/SongPage.css">
 </head>
 <body>
-$END$
+<header>
+    <img src="/img/icons/Logo-ConFondol.png" alt="header-logo" class="logo">
+    <div class="barra">
+        <img src="/img/icons/lupa-gray.png" alt="" class="dualupa">
+        <input type="text" id="search" class="search-bar" placeholder="¿Qué te apetece escuchar?" onfocus="this.placeholder=''" onblur="this.placeholder='¿Qué te apetece escuchar?'">
+        <img src="/img/icons/libro-gray.png" alt="" class="libro">
+    </div>
+    <img src="/img/icons/icon.svg" alt="" class="icono">
+</header>
+<main>
+    <div class="album-container">
+        <div class="album-header">
+            <img src="/img/covers.examples/cover4.jpg" alt="Portada del álbum" class="album-cover">
+            <div class="album-info">
+                <h1>Happily</h1>
+                <div class="artist-info">
+                    <img src="/img/icons/icon.svg" alt="Foto del artista" class="artist-photo">
+                    <p>One Direction | 2013</p>
+                </div>
+            </div>
+            <button class="play-button">▶</button>
+        </div>
+    </div>
+    <article class="song">
+        <img src="/img/covers.examples/cover2.jpg" alt="song" class="song-cover">
+        <h2>Happily</h2>
+        <p>One Direction</p>
+    </article>
+</main>
+<footer>
+    <img src="/img/search.svg" alt="" srcset="">
+    <img src="/img/icons/icon.svg" alt="">
+    <img src="/img/icons/home.svg">
+</footer>
 </body>
 </html>
