@@ -20,7 +20,7 @@
 <main>
   <div class="album-container">
     <div class="album-header">
-      <img th:src="|/uploads/Playlist/${playlist.imgPath}|" alt="Portada del álbum" class="album-cover">
+      <img th:src="|/files/Playlist/${playlist.imgPath}|" alt="Portada del álbum" class="album-cover">
       <div class="album-info">
         <h1 th:text="${playlist.name}">Midnight Memories</h1>
         <div class="artist-info">
@@ -31,8 +31,8 @@
       <button class="play-button">▶</button>
     </div>
     <section class="tracklist">
-      <div class="image" th:each="cancion : ${playlist.songs}">
-        <img th:src="|/uploads/Song/${song.imgPath}|" alt="Song" class="song-cover">
+      <div class="image" th:each="song : ${playlist.songs}">
+        <img th:src="|/files/Song/${song.imgPath}|" alt="Song" class="song-cover">
         <article class="song">
           <h2 th:text="${song.name}">Título de la canción</h2>
           <p th:text="${song.artist}">Nombre del artista</p>

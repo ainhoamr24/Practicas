@@ -21,20 +21,15 @@ import java.util.stream.Collectors;
 public class PlaylistController {
 
     private final PlaylistService playlistService;
-    private final SongService songService;
 
     public PlaylistController() {
         this.playlistService = PlaylistIoc.createService();
-        this.songService = SongIoc.createService();
     }
 
     @GetMapping("/playlist/{id}")
     public String getPlaylist(Model model, @PathVariable(value = "id") Long id) {
         Playlist playlist = playlistService.findById(id);
         model.addAttribute("playlist", playlist);
-
-        Song song = songService.findById(id);
-        model.addAttribute("song", song);
 
         return "playlistPageTL";
     }
