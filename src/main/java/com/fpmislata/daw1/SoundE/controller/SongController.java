@@ -16,7 +16,7 @@ public class SongController {
     }
 
     @GetMapping("/song/{id}")
-    public String getPlaylist(Model model, @PathVariable(value = "id") Long id) {
+    public String getSong(Model model, @PathVariable(value = "id") Long id) {
         Song song = songService.findById(id);
         model.addAttribute("song", song);
 
