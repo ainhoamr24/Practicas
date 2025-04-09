@@ -40,7 +40,7 @@ public class SongServiceImplTest {
     class FindById {
         @Test
         void givenExistingId_shouldReturnSong() {
-            when(songService.findById(1L)).thenReturn(SONG1);
+            when(songRepository.findById(1L)).thenReturn(SONG1);
 
             Song song = songService.findById(1L);
 
@@ -49,15 +49,18 @@ public class SongServiceImplTest {
 
         @Test
         void nonExistingId_shouldReturnNull() {
-            when(songService.findById(2L)).thenReturn(null);
+            when(songRepository.findById(2L)).thenReturn(null);
 
-            assertNull(songService.findById(2L));
+            Song song = songService.findById(2L);
+
+
+            assertNull(song);
         }
     }
 
     @Test
     void findAll() {
-        when(songService.findAll()).thenReturn(List.of(SONG1));
+        when(songRepository.findAll()).thenReturn(List.of(SONG1));
 
         List<Song> songs = songService.findAll();
 
@@ -68,7 +71,7 @@ public class SongServiceImplTest {
     class FindByName {
         @Test
         void givenExistingName_shouldReturnASongWithThatName() {
-            when(songService.findByName("Song1")).thenReturn(List.of(SONG1));
+            when(songRepository.findByName("Song1")).thenReturn(List.of(SONG1));
 
             List<Song> songs = songService.findByName("Song1");
 
@@ -77,7 +80,7 @@ public class SongServiceImplTest {
 
         @Test
         void givenPartOfAName_shouldReturnASongWithThatName() {
-            when(songService.findByName("Song2")).thenReturn(List.of(SONG2));
+            when(songRepository.findByName("Song2")).thenReturn(List.of(SONG2));
 
             List<Song> songs = songService.findByName("Song2");
 
@@ -86,9 +89,12 @@ public class SongServiceImplTest {
 
         @Test
         void givenNonExistingName_shouldReturnNull() {
-            when(songService.findByName("pepe")).thenReturn(null);
+            when(songRepository.findByName("pepe")).thenReturn(null);
 
-            assertNull(songService.findByName("pepe"));
+            List<Song> songs = songService.findByName("pepe");
+
+
+            assertNull(songs);
         }
     }
 
@@ -102,7 +108,7 @@ public class SongServiceImplTest {
 
         @Test
         void givenAExistingGenre_shouldReturnASongThatHaveIt() {
-            when(songService.findByGenre(GENRE)).thenReturn(List.of(SONG1));
+            when(songRepository.findByGenre(GENRE.getId())).thenReturn(List.of(SONG1));
 
             List<Song> songs = songService.findByGenre(GENRE);
 
@@ -111,9 +117,12 @@ public class SongServiceImplTest {
 
         @Test
         void givenExistingGenreThatNoOneHavesIt_shouldReturnNull() {
-            when(songService.findByGenre(genreTest)).thenReturn(null);
+            when(songRepository.findByGenre(genreTest.getId())).thenReturn(null);
 
-            assertNull(songService.findByGenre(genreTest));
+            List<Song> songs = songService.findByGenre(genreTest);
+
+
+            assertNull(songs);
         }
     }
 
@@ -122,7 +131,7 @@ public class SongServiceImplTest {
 
         @Test
         void givenAExistingPlaylist_shouldReturnASongThatHaveIt() {
-            when(songService.getSongsByPlaylist(PLAYLIST)).thenReturn(List.of(SONG1));
+            when(songRepository.getSongsByPlaylist(PLAYLIST.getId())).thenReturn(List.of(SONG1));
 
             List<Song> songs = songService.getSongsByPlaylist(PLAYLIST);
 
@@ -131,7 +140,7 @@ public class SongServiceImplTest {
 
         @Test
         void givenExistingPlaylistThatNoOneHavesIt_shouldReturnNull() {
-            when(songService.getSongsByPlaylist(PLAYLIST)).thenReturn(null);
+            when(songRepository.getSongsByPlaylist(PLAYLIST.getId())).thenReturn(null);
 
             assertNull(songService.getSongsByPlaylist(PLAYLIST));
         }

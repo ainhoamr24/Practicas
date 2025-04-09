@@ -49,7 +49,7 @@ public class PlaylistDaoJdbc implements PlaylistDao {
     public List<Playlist> findByName(String name) {
         String sql = "SELECT * " +
                 "FROM tb_playlist p " +
-                "WHERE p.name like ?";
+                "WHERE p.name like %?%";
 
         List<Object> parameters = List.of(name);
 

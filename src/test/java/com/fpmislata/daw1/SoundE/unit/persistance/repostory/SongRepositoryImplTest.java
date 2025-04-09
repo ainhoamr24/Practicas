@@ -42,7 +42,7 @@ public class SongRepositoryImplTest {
     class FindById {
         @Test
         void givenExistingId_shouldReturnSong() {
-            when(songRepository.findById(1L)).thenReturn(SONG1);
+            when(songDao.findById(1L)).thenReturn(SONG1);
 
             Song song = songRepository.findById(1L);
 
@@ -51,15 +51,17 @@ public class SongRepositoryImplTest {
 
         @Test
         void nonExistingId_shouldReturnNull() {
-            when(songRepository.findById(2L)).thenReturn(null);
+            when(songDao.findById(2L)).thenReturn(null);
 
-            assertNull(songRepository.findById(2L));
+            Song song = songRepository.findById(2L);
+
+            assertNull(song);
         }
     }
 
     @Test
     void findAll() {
-        when(songRepository.findAll()).thenReturn(List.of(SONG1));
+        when(songDao.findAll()).thenReturn(List.of(SONG1));
 
         List<Song> songs = songRepository.findAll();
 
@@ -70,7 +72,7 @@ public class SongRepositoryImplTest {
     class FindByName {
         @Test
         void givenExistingName_shouldReturnASongWithThatName() {
-            when(songRepository.findByName("Song1")).thenReturn(List.of(SONG1));
+            when(songDao.findByName("Song1")).thenReturn(List.of(SONG1));
 
             List<Song> songs = songRepository.findByName("Song1");
 
@@ -79,7 +81,7 @@ public class SongRepositoryImplTest {
 
         @Test
         void givenPartOfAName_shouldReturnASongWithThatName() {
-            when(songRepository.findByName("Song2")).thenReturn(List.of(SONG2));
+            when(songDao.findByName("Song2")).thenReturn(List.of(SONG2));
 
             List<Song> songs = songRepository.findByName("Song2");
 
@@ -88,9 +90,11 @@ public class SongRepositoryImplTest {
 
         @Test
         void givenNonExistingName_shouldReturnNull() {
-            when(songRepository.findByName("pepe")).thenReturn(null);
+            when(songDao.findByName("pepe")).thenReturn(null);
 
-            assertNull(songRepository.findByName("pepe"));
+            List<Song> songs = songRepository.findByName("pepe");
+
+            assertNull(songs);
         }
     }
 
@@ -104,7 +108,7 @@ public class SongRepositoryImplTest {
 
         @Test
         void givenAExistingGenre_shouldReturnASongThatHaveIt() {
-            when(songRepository.findByGenre(GENRE.getId())).thenReturn(List.of(SONG1));
+            when(songDao.findByGenre(GENRE.getId())).thenReturn(List.of(SONG1));
 
             List<Song> songs = songRepository.findByGenre(GENRE.getId());
 
@@ -113,9 +117,11 @@ public class SongRepositoryImplTest {
 
         @Test
         void givenExistingGenreThatNoOneHavesIt_shouldReturnNull() {
-            when(songRepository.findByGenre(genreTest.getId())).thenReturn(null);
+            when(songDao.findByGenre(genreTest.getId())).thenReturn(null);
 
-            assertNull(songRepository.findByGenre(genreTest.getId()));
+            List<Song> songs = songRepository.findByGenre(GENRE.getId());
+
+            assertNull(songs);
         }
     }
 
@@ -124,7 +130,7 @@ public class SongRepositoryImplTest {
 
         @Test
         void givenAExistingPlaylist_shouldReturnASongThatHaveIt() {
-            when(songRepository.getSongsByPlaylist(PLAYLIST.getId())).thenReturn(List.of(SONG1));
+            when(songDao.getSongsByPlaylist(PLAYLIST.getId())).thenReturn(List.of(SONG1));
 
             List<Song> songs = songRepository.getSongsByPlaylist(PLAYLIST.getId());
 
@@ -133,9 +139,11 @@ public class SongRepositoryImplTest {
 
         @Test
         void givenExistingPlaylistThatNoOneHavesIt_shouldReturnNull() {
-            when(songRepository.getSongsByPlaylist(PLAYLIST.getId())).thenReturn(null);
+            when(songDao.getSongsByPlaylist(PLAYLIST.getId())).thenReturn(null);
 
-            assertNull(songRepository.getSongsByPlaylist(PLAYLIST.getId()));
+            List<Song> songs = songRepository.getSongsByPlaylist(PLAYLIST.getId());
+
+            assertNull(songs);
         }
     }
 }

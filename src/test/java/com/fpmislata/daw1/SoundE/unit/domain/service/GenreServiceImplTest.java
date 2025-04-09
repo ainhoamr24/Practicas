@@ -38,7 +38,7 @@ public class GenreServiceImplTest {
         void givenExistingId_returnGenre() {
             when(genreRepository.findById(1L)).thenReturn(GENRE);
 
-            Genre genre = genreRepository.findById(1L);
+            Genre genre = genreService.findById(1L);
 
             assertEquals(GENRE, genre);
         }
@@ -47,7 +47,9 @@ public class GenreServiceImplTest {
         void givenNonExistingId_returnNull() {
             when(genreRepository.findById(2L)).thenReturn(null);
 
-            assertNull(genreRepository.findById(2L));
+            Genre genre = genreService.findById(2L);
+
+            assertNull(genre);
         }
     }
 
@@ -55,7 +57,7 @@ public class GenreServiceImplTest {
     void findAll() {
         when(genreRepository.findAll()).thenReturn(List.of(GENRE));
 
-        List<Genre> genres = genreRepository.findAll();
+        List<Genre> genres = genreService.findAll();
 
         assertEquals(genres, List.of(GENRE));
     }
@@ -64,7 +66,7 @@ public class GenreServiceImplTest {
     class FindByName {
         @Test
         void givenExistingName_returnMatchingGenres() {
-            when(genreService.findByName("Pop")).thenReturn(List.of(GENRE));
+            when(genreRepository.findByName("Pop")).thenReturn(List.of(GENRE));
 
             List<Genre> genres = genreService.findByName("Pop");
 
@@ -73,9 +75,11 @@ public class GenreServiceImplTest {
 
         @Test
         void givenNonExistingName_returnNull() {
-            when(genreService.findByName("juan")).thenReturn(null);
+            when(genreRepository.findByName("juan")).thenReturn(null);
 
-            assertNull(genreService.findByName("juan"));
+            List<Genre> genres = genreService.findByName("pepe");
+
+            assertNull(genres);
         }
     }
 
@@ -83,7 +87,7 @@ public class GenreServiceImplTest {
     class GetGenreBySong {
         @Test
         void givenSongWithGenre_returnGenreList() {
-            when(genreService.getGenreBySong(SONG1)).thenReturn(List.of(GENRE));
+            when(genreRepository.getGenreBySong(SONG1)).thenReturn(List.of(GENRE));
 
             List<Genre> genres = genreService.getGenreBySong(SONG1);
 
@@ -92,9 +96,11 @@ public class GenreServiceImplTest {
 
         @Test
         void givenSongWithNoGenre_returnNull() {
-            when(genreService.getGenreBySong(SONG1)).thenReturn(null);
+            when(genreRepository.getGenreBySong(SONG1)).thenReturn(null);
 
-            assertNull(genreService.getGenreBySong(SONG1));
+            List<Genre> genres = genreService.getGenreBySong(SONG1);
+
+            assertNull(genres);
         }
     }
 
@@ -102,7 +108,7 @@ public class GenreServiceImplTest {
     class GetGenreByPlaylist {
         @Test
         void givenPlaylistWithGenre_returnGenreList() {
-            when(genreService.getGenreByPlaylist(PLAYLIST)).thenReturn(List.of(GENRE));
+            when(genreRepository.getGenreByPlaylist(PLAYLIST)).thenReturn(List.of(GENRE));
 
             List<Genre> genres = genreService.getGenreByPlaylist(PLAYLIST);
 
@@ -111,9 +117,11 @@ public class GenreServiceImplTest {
 
         @Test
         void givenPlaylistWithNoGenre_returnNull() {
-            when(genreService.getGenreByPlaylist(PLAYLIST)).thenReturn(null);
+            when(genreRepository.getGenreByPlaylist(PLAYLIST)).thenReturn(null);
 
-            assertNull(genreService.getGenreByPlaylist(PLAYLIST));
+            List<Genre> genres = genreService.getGenreByPlaylist(PLAYLIST);
+
+            assertNull(genres);
         }
     }
 }

@@ -104,7 +104,7 @@ public class PlaylistRepositoryImplTest {
         }
 
         @Test
-        void givenAExistingGenre_shoudlReturnAPlaylistThatHaveIt() {
+        void givenAExistingGenre_shouldReturnAPlaylistThatHaveIt() {
             when(playlistSongDao.findByGenre(GENRE.getName())).thenReturn(List.of(PLAYLIST));
 
             List<Playlist> playlists = playlistRepository.findByGenre(GENRE.getName());
@@ -113,7 +113,7 @@ public class PlaylistRepositoryImplTest {
         }
 
         @Test
-        void givenExistingGenreThatNoOneHavesIt_shoudlReturnNull() {
+        void givenExistingGenreThatNoOneHavesIt_shouldReturnNull() {
             when(playlistSongDao.findByGenre(genreTest.getName())).thenReturn(null);
 
             List<Playlist> playlists = playlistRepository.findByGenre(genreTest.getName());

@@ -46,7 +46,7 @@ public class PlaylistServiceImplTest {
         void nonExistingId_shouldReturnNull() {
             when(playlistRepository.findById(2L)).thenReturn(null);
 
-            Playlist playlist = playlistRepository.findById(2L);
+            Playlist playlist = playlistService.findById(2L);
 
             assertNull(playlist);
         }

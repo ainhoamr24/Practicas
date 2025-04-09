@@ -47,7 +47,7 @@ public class GenreDaoJdbc implements GenreDao {
     public List<Genre> findByName(String name) {
         String sql = "SELECT * " +
                 "FROM tb_genre g " +
-                "WHERE g.name LIKE ?";
+                "WHERE g.name LIKE %?%";
         List<Object> parameters = List.of(name);
         try (ResultSet rs = databaseConnection.executeSql(sql, parameters)) {
             return genreRowMapper.map(rs);
