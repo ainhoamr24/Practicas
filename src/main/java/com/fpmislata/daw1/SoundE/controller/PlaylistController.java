@@ -37,6 +37,6 @@ public class PlaylistController {
 
         model.addAttribute("playlist", playlist);
 
-        return "playlistPageTL";
+        return "playlistpage/playlistpage";
     }
 }

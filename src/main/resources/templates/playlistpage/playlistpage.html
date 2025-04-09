@@ -8,15 +8,7 @@
   <link rel="stylesheet" href="/css/PlaylistPage.css">
 </head>
 <body>
-<header>
-  <img src="/img/icons/Logo-ConFondol.png" alt="header-logo" class="logo">
-  <div class="barra">
-    <img src="/img/icons/lupa-gray.png" alt="" class="dualupa">
-    <input type="text" id="search" class="search-bar" placeholder="¿Qué te apetece escuchar?" onfocus="this.placeholder=''" onblur="this.placeholder='¿Qué te apetece escuchar?'">
-    <img src="/img/icons/libro-gray.png" alt="" class="libro">
-  </div>
-  <img src="/img/icons/icon.svg" alt="" class="icono">
-</header>
+<header th:replace="~{fragments/header :: header}"></header>
 <main>
   <div class="album-container">
     <div class="album-header">
@@ -41,10 +33,6 @@
     </section>
   </div>
 </main>
-<footer>
-  <img src="/img/icons/search.svg" alt="">
-  <img src="/img/icons/icon.svg" alt="">
-  <img src="/img/icons/home.svg">
-</footer>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
 </body>
 </html>

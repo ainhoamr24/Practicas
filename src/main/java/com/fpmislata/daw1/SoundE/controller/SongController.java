@@ -22,6 +22,6 @@ public class SongController {
         Song song = songService.findById(id);
         model.addAttribute("song", song);
 
-        return "songPageTL";
+        return "songpage/songpage";
     }
 }
