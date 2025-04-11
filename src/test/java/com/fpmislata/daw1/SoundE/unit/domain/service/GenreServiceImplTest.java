@@ -77,7 +77,7 @@ public class GenreServiceImplTest {
         void givenNonExistingName_returnNull() {
             when(genreRepository.findByName("juan")).thenReturn(null);
 
-            List<Genre> genres = genreService.findByName("pepe");
+            List<Genre> genres = genreService.findByName("juan");
 
             assertNull(genres);
         }

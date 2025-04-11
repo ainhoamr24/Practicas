@@ -75,7 +75,7 @@ public class GenreRepositoryImplTest {
         void givenNonExistingName_returnNull() {
             when(genreDao.findByName("juan")).thenReturn(null);
 
-            List<Genre> genres = genreRepository.findByName("pepe");
+            List<Genre> genres = genreRepository.findByName("juan");
 
             assertNull(genres);
         }

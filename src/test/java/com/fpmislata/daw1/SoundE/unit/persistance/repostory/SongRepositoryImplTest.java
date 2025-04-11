@@ -119,7 +119,7 @@ public class SongRepositoryImplTest {
         void givenExistingGenreThatNoOneHavesIt_shouldReturnNull() {
             when(songDao.findByGenre(genreTest.getId())).thenReturn(null);
 
-            List<Song> songs = songRepository.findByGenre(GENRE.getId());
+            List<Song> songs = songRepository.findByGenre(genreTest.getId());
 
             assertNull(songs);
         }
