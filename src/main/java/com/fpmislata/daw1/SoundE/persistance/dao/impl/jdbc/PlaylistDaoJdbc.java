@@ -27,7 +27,8 @@ public class PlaylistDaoJdbc implements PlaylistDao {
         List<Object> parameters = List.of(id);
 
         try (ResultSet rs = databaseConnection.executeSql(sql, parameters)) {
-            return playlistRowMapper.map(rs).get(0);
+            List<Playlist> playlistList = playlistRowMapper.map(rs);
+            return playlistList.isEmpty() ? null : playlistList.get(0);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -49,9 +50,9 @@ public class PlaylistDaoJdbc implements PlaylistDao {
     public List<Playlist> findByName(String name) {
         String sql = "SELECT * " +
                 "FROM tb_playlist p " +
-                "WHERE p.name like %?%";
+                "WHERE p.name like ?";
 
-        List<Object> parameters = List.of(name);
+        List<Object> parameters = List.of('%'+name+'%');
 
         try (ResultSet rs = databaseConnection.executeSql(sql, parameters)) {
             return playlistRowMapper.map(rs);

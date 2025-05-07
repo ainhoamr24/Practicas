@@ -16,10 +16,11 @@ public class AppPropertiesReader {
         loadProperties("application.properties");
 
         String activeProfile = getProperty("spring.profiles.active");
-
         if(activeProfile != null) {
             log.info("Perfil activo: " + activeProfile);
             loadProperties("application-"+activeProfile+".properties");
+        } else {
+            log.warn("No se ha especificado ningún perfil");
         }
     }
 

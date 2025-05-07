@@ -2,6 +2,7 @@ package com.fpmislata.daw1.SoundE.domain.entity;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 public class Playlist {
     private Long id;
@@ -79,6 +80,18 @@ public class Playlist {
 
     public void setSongs(List<Song> songs) {
         this.songs = songs;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Playlist playlist = (Playlist) o;
+        return Objects.equals(id, playlist.id) && Objects.equals(name, playlist.name) && Objects.equals(imgPath, playlist.imgPath) && Objects.equals(artist, playlist.artist) && Objects.equals(artistImgPath, playlist.artistImgPath) && Objects.equals(dateCreate, playlist.dateCreate) && Objects.equals(songs, playlist.songs);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, imgPath, artist, artistImgPath, dateCreate, songs);
     }
 
     @Override
