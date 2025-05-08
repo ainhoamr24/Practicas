@@ -82,12 +82,12 @@ public class PlaylistServiceImplTest {
         }
 
         @Test
-        void givenNonExistingName_shouldReturnNull() {
-            when(playlistRepository.findByName("pepe")).thenReturn(null);
+        void givenNonExistingName_shouldReturnEmptyList() {
+            when(playlistRepository.findByName("pepe")).thenReturn(List.of());
 
             List<Playlist> playlists = playlistService.findByName("pepe");
 
-            assertNull(playlists);
+            assertTrue(playlists.isEmpty());
         }
     }
 
@@ -109,12 +109,12 @@ public class PlaylistServiceImplTest {
         }
 
         @Test
-        void givenExistingGenreThatNoOneHavesIt_shoudlReturnNull() {
-            when(playlistRepository.findByGenre(genreTest.getName())).thenReturn(null);
+        void givenExistingGenreThatNoOneHavesIt_shoudlReturnEmptyList() {
+            when(playlistRepository.findByGenre(genreTest.getName())).thenReturn(List.of());
 
             List<Playlist> playlists = playlistService.findByGenre(genreTest);
 
-            assertNull(playlists);
+            assertTrue(playlists.isEmpty());
         }
 
     }
