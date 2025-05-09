@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Song {
@@ -73,6 +74,7 @@ public class Song {
 
     public void setSeconds(Long seconds) {
         this.seconds = seconds;
+        setDuration(seconds);
     }
 
     public String getName() {
@@ -115,6 +117,19 @@ public class Song {
 
     public String getFormattedDuration() {
         return String.format("%02d:%02d", duration.toMinutes(), duration.getSeconds() % 60);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Song song = (Song) o;
+        return Objects.equals(id, song.id) && Objects.equals(imgPath, song.imgPath) && Objects.equals(seconds, song.seconds) && Objects.equals(name, song.name) && Objects.equals(artist, song.artist) && Objects.equals(artistImgPath, song.artistImgPath) && Objects.equals(dateCreate, song.dateCreate) && Objects.equals(genres, song.genres) && Objects.equals(duration, song.duration);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, imgPath, seconds, name, artist, artistImgPath, dateCreate, genres, duration);
     }
 
     @Override

@@ -24,7 +24,9 @@ public class SongDaoJdbc implements SongDao {
         String sql = "SELECT * FROM tb_song WHERE id_song = ?";
         List<Object> parameters = List.of(id);
         try (ResultSet rs = databaseConnection.executeSql(sql, parameters)) {
-            return songRowMapper.map(rs).get(0);
+            if (!rs.next())
+                return null;
+            return songRowMapper.mapItem(rs);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -44,7 +46,7 @@ public class SongDaoJdbc implements SongDao {
 
     @Override
     public List<Song> findByName(String name) {
-        String sql = "SELECT * FROM tb_song WHERE name like %?%";
+        String sql = "SELECT * FROM tb_song WHERE name like ?";
         List<Object> parameters = List.of(name);
         try (ResultSet rs = databaseConnection.executeSql(sql, parameters)) {
             return songRowMapper.map(rs);
