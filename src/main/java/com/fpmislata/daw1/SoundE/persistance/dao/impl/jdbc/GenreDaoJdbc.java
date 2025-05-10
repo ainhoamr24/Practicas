@@ -27,7 +27,8 @@ public class GenreDaoJdbc implements GenreDao {
                 "WHERE g.id_genre = ?";
         List<Object> parameters = List.of(id);
         try (ResultSet rs = databaseConnection.executeSql(sql, parameters)) {
-            return genreRowMapper.map(rs).get(0);
+            List<Genre> genreList = genreRowMapper.map(rs);
+            return genreList.isEmpty() ? null : genreList.get(0);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -47,8 +48,10 @@ public class GenreDaoJdbc implements GenreDao {
     public List<Genre> findByName(String name) {
         String sql = "SELECT * " +
                 "FROM tb_genre g " +
-                "WHERE g.name LIKE %?%";
-        List<Object> parameters = List.of(name);
+                "WHERE g.name LIKE ?";
+
+        List<Object> parameters = List.of("%" + name + "%");
+
         try (ResultSet rs = databaseConnection.executeSql(sql, parameters)) {
             return genreRowMapper.map(rs);
         } catch (SQLException e) {

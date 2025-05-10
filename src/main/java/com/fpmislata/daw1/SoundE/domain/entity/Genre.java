@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Genre {
     private Long id;
@@ -41,6 +42,19 @@ public class Genre {
 
     public void setImgPath(String imgPath) {
         this.imgPath = imgPath;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Genre genre = (Genre) o;
+        return Objects.equals(id, genre.id) && Objects.equals(name, genre.name) && Objects.equals(imgPath, genre.imgPath);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, imgPath);
     }
 
     @Override
