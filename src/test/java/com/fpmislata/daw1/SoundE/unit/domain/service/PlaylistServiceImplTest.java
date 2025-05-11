@@ -1,5 +1,6 @@
 package com.fpmislata.daw1.SoundE.unit.domain.service;
 
+import com.fpmislata.daw1.SoundE.data.PlaylistData;
 import com.fpmislata.daw1.SoundE.domain.entity.Genre;
 import com.fpmislata.daw1.SoundE.domain.entity.Playlist;
 import com.fpmislata.daw1.SoundE.domain.entity.Song;
@@ -22,6 +23,7 @@ public class PlaylistServiceImplTest {
     private final Genre GENRE = new Genre(1L,"Pop","");
     private final List<Song> songs = List.of(new Song(1L,"/images/songs/vowels",230L,"Song1", "Deiber", "/uploads/deiber", LocalDate.parse("2020-03-12"),null), new Song(2L,"/images/songs/vowels",230L,"Song1", "Deiber", "/uploads/deiber",LocalDate.parse("2020-03-12"),List.of(GENRE)));
     private final Playlist PLAYLIST = new Playlist(1L,"Vowels","/images/playlist/hunny.jpg","HUNNY","/images/artits/playlist",LocalDate.parse("2020-03-12"),songs);
+    private final List<Playlist> playlistList = PlaylistData.PLAYLIST_LIST;
 
     private Genre genreTest;
 
@@ -34,7 +36,7 @@ public class PlaylistServiceImplTest {
     @Nested
     class FindById {
         @Test
-        void givenExistingId_shouldReturnPlaylist() {
+        void findById_shouldReturnPlaylist() {
             when(playlistRepository.findById(1L)).thenReturn(PLAYLIST);
 
             Playlist playlist = playlistService.findById(1L);
@@ -43,7 +45,7 @@ public class PlaylistServiceImplTest {
         }
 
         @Test
-        void nonExistingId_shouldReturnNull() {
+        void findByNonExistentId_shouldReturnNull() {
             when(playlistRepository.findById(2L)).thenReturn(null);
 
             Playlist playlist = playlistService.findById(2L);
@@ -53,7 +55,7 @@ public class PlaylistServiceImplTest {
     }
 
     @Test
-    void findAll() {
+    void findAll_shouldReturnAllPlaylists() {
         when(playlistRepository.findAll()).thenReturn(List.of(PLAYLIST));
 
         List<Playlist> playlists = playlistService.findAll();
@@ -64,7 +66,7 @@ public class PlaylistServiceImplTest {
     @Nested
     class FindByName {
         @Test
-        void givenExistingName_shouldReturnAPlaylistWithThatName() {
+        void findByName_shouldReturnMatchingPlaylist() {
             when(playlistRepository.findByName("Vowels")).thenReturn(List.of(PLAYLIST));
 
             List<Playlist> playlists = playlistService.findByName("Vowels");
@@ -73,12 +75,13 @@ public class PlaylistServiceImplTest {
         }
 
         @Test
-        void givenPartOfAName_shouldReturnAPlaylistWithThatName() {
-            when(playlistRepository.findByName("Vow")).thenReturn(List.of(PLAYLIST));
+        void findByName_shouldReturnMultipleMatchingPlaylists() {
+            when(playlistRepository.findByName("i")).thenReturn(List.of(playlistList.get(0), playlistList.get(1), playlistList.get(3)));
 
-            List<Playlist> playlists = playlistService.findByName("Vow");
+            List<Playlist> result = playlistService.findByName("i");
+            List<Playlist> expectedList = List.of(playlistList.get(0), playlistList.get(1), playlistList.get(3));
 
-            assertEquals(playlists, List.of(PLAYLIST));
+            assertEquals(expectedList, result);
         }
 
         @Test
@@ -100,7 +103,7 @@ public class PlaylistServiceImplTest {
         }
 
         @Test
-        void givenAExistingGenre_shoudlReturnAPlaylistThatHaveIt() {
+        void findByGenre_shouldReturnPlaylistWithIt() {
             when(playlistRepository.findByGenre(GENRE.getName())).thenReturn(List.of(PLAYLIST));
 
             List<Playlist> playlists = playlistService.findByGenre(GENRE);
@@ -109,7 +112,7 @@ public class PlaylistServiceImplTest {
         }
 
         @Test
-        void givenExistingGenreThatNoOneHavesIt_shoudlReturnEmptyList() {
+        void findByNonExistentGenre_shouldReturnEmptyList() {
             when(playlistRepository.findByGenre(genreTest.getName())).thenReturn(List.of());
 
             List<Playlist> playlists = playlistService.findByGenre(genreTest);

@@ -50,7 +50,7 @@ public class PlaylistDaoJdbcTest extends JdbcTest {
     @Nested
     class FindByName {
         @Test
-        void findByName_shouldReturnMatchingSongs() {
+        void findByName_shouldReturnMatchingPlaylist() {
             List<Playlist> result = playlistDao.findByName("Gorillaz");
             List<Playlist> expectedList = List.of(expectedPlaylistList.get(0));
 
@@ -58,7 +58,7 @@ public class PlaylistDaoJdbcTest extends JdbcTest {
         }
 
         @Test
-        void findByName_shouldReturnMultipleMatchingSongs() {
+        void findByName_shouldReturnMultipleMatchingPlaylists() {
             List<Playlist> result = playlistDao.findByName("i");
             List<Playlist> expectedList = List.of(expectedPlaylistList.get(0), expectedPlaylistList.get(1), expectedPlaylistList.get(3));
 
@@ -66,7 +66,7 @@ public class PlaylistDaoJdbcTest extends JdbcTest {
         }
 
         @Test
-        void findByNonExisistentName_shouldReturnEmptyList() {
+        void findByNonExistentName_shouldReturnEmptyList() {
             List<Playlist> result = playlistDao.findByName("p");
             assertTrue(result.isEmpty());
         }
