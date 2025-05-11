@@ -16,22 +16,24 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PlaylistSongDaoJdbcTest extends JdbcTest {
     private final PlaylistSongDao playlistSongDao = new PlaylistSongDaoJdbc();
 
-    private final List<Playlist> expectedPlaylistList = PlaylistData.PLAYLIST_LIST;
+    public final List<Playlist> expectedPlaylistList = PlaylistData.PLAYLIST_LIST;
 
     @Nested
     class FindByGente {
         @Test
         void givenGenre_shouldReturnListOfPlaylistWithIt() {
-            List<Playlist> result = playlistSongDao.findByGenre("Alternative Rock");
             List<Playlist> expectedList = List.of(expectedPlaylistList.get(0));
+
+            List<Playlist> result = playlistSongDao.findByGenre("Alternative Rock");
 
             assertEquals(expectedList, result);
         }
 
         @Test
         void givenGenre_shouldReturnListOfPlaylistsWithIt(){
-            List<Playlist> result = playlistSongDao.findByGenre("Indie Rock");
             List<Playlist> expectedList = List.of(expectedPlaylistList.get(1), expectedPlaylistList.get(2));
+
+            List<Playlist> result = playlistSongDao.findByGenre("Indie Rock");
 
             assertEquals(expectedList, result);
         }
