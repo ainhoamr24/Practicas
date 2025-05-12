@@ -267,10 +267,22 @@
             </article>
         </section>
         <footer>
-            <img src="./media/search.svg" alt="" srcset="">
+            <img src="./media/home.svg" class="home">
             <img src="./media/icon.svg" alt="">
-            <img src="./media/home.svg">
+            <img src="./media/search.svg" alt="" srcset="">
         </footer>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          if (window.location.href === 'http://localhost:8080/' || window.location.pathname === '/') {
+            const homeIcon = document.querySelector('.home');
+
+            if (homeIcon) {
+              homeIcon.style.color = '#d103d1';
+            }
+          }
+        });
+    </script>
 </body>
 </html>
