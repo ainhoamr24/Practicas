@@ -55,19 +55,23 @@ public class SongDaoJdbcTest extends JdbcTest {
     @Nested
     class FindByName {
         @Test
-        void findByName_shouldReturnSong() {
+        void findByName_shouldReturnMatchingSong() {
             List<Song> result = songDao.findByName("Re-Hash");
-            assertEquals(expectedSongList.get(0), result.get(0));
+            List<Song> expectedList = List.of(expectedSongList.get(0));
+
+            assertEquals(expectedList, result);
         }
 
         @Test
-        void findByDifferentName_shouldReturnDifferentSong() {
-            List<Song> result = songDao.findByName("5/4");
-            assertEquals(expectedSongList.get(1), result.get(0));
+        void findByName_shouldReturnMultipleMatchingSongs() {
+            List<Song> result = songDao.findByName("e");
+            List<Song> expectedList = List.of(expectedSongList.get(0), expectedSongList.get(3), expectedSongList.get(5), expectedSongList.get(7));
+
+            assertEquals(expectedList, result);
         }
 
         @Test
-        void findByNonExistentName_shouldReturnVoidList() {
+        void findByNonExistentName_shouldReturnEmptyList() {
             List<Song> result = songDao.findByName("Pepe");
             assertTrue(result.isEmpty());
         }
@@ -75,20 +79,19 @@ public class SongDaoJdbcTest extends JdbcTest {
 
     @Nested
     class FindByGenre {
-        @Test
-        void findByGenre_shouldReturnSong() {
-            List<Song> result = songDao.findByGenre(1L);
-            assertEquals(expectedSongList.get(0), result.get(0));
-        }
+
+        //El primer test se ha borrado ya que no existe ningun género que solo equivalga a una canción
 
         @Test
-        void findByDifferentGenre_shouldReturnDifferentSong() {
+        void findByGenre_shouldReturnMultipleMatchingSongs() {
             List<Song> result = songDao.findByGenre(2L);
-            assertEquals(expectedSongList.get(2), result.get(0));
+            List<Song> expectedList = List.of(expectedSongList.get(2), expectedSongList.get(3), expectedSongList.get(4), expectedSongList.get(5));
+
+            assertEquals(expectedList, result);
         }
 
         @Test
-        void findByNonExistentGenre_shouldReturnVoidList() {
+        void findByNonExistentGenre_shouldReturnEmptyList() {
             List<Song> result = songDao.findByGenre(6L);
             assertTrue(result.isEmpty());
         }
@@ -96,20 +99,19 @@ public class SongDaoJdbcTest extends JdbcTest {
 
     @Nested
     class FindByPlaylist {
-        @Test
-        void findByPlaylist_shouldReturnSongs() {
-            List<Song> result = songDao.getSongsByPlaylist(1L);
-            assertEquals(expectedSongList.get(0), result.get(0));
-        }
+
+        //El primer test se ha borrado ya que no existe ningun género que solo equivalga a una canción
 
         @Test
-        void findByDifferentPlaylist_shouldReturnDifferentSongs() {
+        void findByPlaylist_shouldReturnMultipleMatchingSongs() {
             List<Song> result = songDao.getSongsByPlaylist(2L);
-            assertEquals(expectedSongList.get(2), result.get(0));
+            List<Song> expectedList = List.of(expectedSongList.get(2), expectedSongList.get(3));
+
+            assertEquals(expectedList, result);
         }
 
         @Test
-        void findByNonExistentPlaylist_shouldReturnVoidList() {
+        void findByNonExistentPlaylist_shouldReturnEmptyList() {
             List<Song> result = songDao.getSongsByPlaylist(6L);
             assertTrue(result.isEmpty());
         }
