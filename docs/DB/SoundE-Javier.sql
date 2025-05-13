@@ -60,3 +60,8 @@ create table if not exists tb_songGenres (
     foreign key (sgr_id_song) references tb_song(id_song),
     foreign key (sgr_id_genre) references tb_genre(id_genre)
 );
+
+
+
+create user 'SoundE'@'localhost' identified by 'sounde';
+grant all privileges on SoundE.* to 'SoundE'@'localhost';
