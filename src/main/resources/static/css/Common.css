@@ -145,6 +145,10 @@ footer {
         display: none;
     }
 
+    footer svg.home {
+      display: none;
+    }
+
 }
 
 @media (max-width: 960px) {
@@ -155,6 +159,11 @@ footer {
     footer > img {
         width: 50px;
     }
+
+    footer svg.home {
+      width: 50px;
+      height: 50px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -164,5 +173,10 @@ footer {
 
     footer > img {
         width: 30px;
+    }
+
+    footer svg.home {
+      width: 30px;
+      height: 30px;
     }
 }
