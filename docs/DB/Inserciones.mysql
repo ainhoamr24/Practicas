@@ -56,7 +56,7 @@ insert into tb_playlist(name, artist, artistImgPath, dateCreate, imgPath) values
     ('Road Trip', 'The Cars', 'cars.jpg', curdate(), 'roadtrip.jpg'),
     ('Workout Energy', 'Ryan Stevenson', 'ryan.jpg', curdate(), 'workout.jpg');
 
-insert into tb_playlistsong(pls_id_playlist, pls_id_song) values
+insert into tb_playlistSong(pls_id_playlist, pls_id_song) values
     (1, 4),
     (1, 5),
     (1, 6),

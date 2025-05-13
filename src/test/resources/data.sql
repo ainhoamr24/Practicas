@@ -14,7 +14,7 @@ insert into tb_playlist(name, artist, artistImgPath, dateCreate, imgPath) values
     ('Yes. Yes. Yes. Yes. Yes', 'HUNNY', 'hunny.jpg', '2025-05-06', 'yes_yes.jpg'),
     ('Lo-Fi Beats', 'Lo-Fi Beats', 'lofi.jpg', '2025-05-06', 'lofi.jpg');
 
-insert into tb_playlistsong(pls_id_playlist, pls_id_song) values
+insert into tb_playlistSong(pls_id_playlist, pls_id_song) values
     (1, 1),
     (1, 2),
     (2, 3),

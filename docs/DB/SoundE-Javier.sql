@@ -1,6 +1,6 @@
-drop database if exists SoundE;
-create database SoundE;
-use SoundE;
+drop database if exists sounde;
+create database sounde;
+use sounde;
 create table if not exists tb_user (
     id_usr int primary key auto_increment,
     username varchar(50) not null,
@@ -63,5 +63,5 @@ create table if not exists tb_songGenres (
 
 
 
-create user 'SoundE'@'localhost' identified by 'sounde';
-grant all privileges on SoundE.* to 'SoundE'@'localhost';
+create user 'sounde'@'localhost' identified by 'sounde';
+grant all privileges on sounde.* to 'sounde'@'localhost';
