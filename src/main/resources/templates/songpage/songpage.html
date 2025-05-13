@@ -17,7 +17,7 @@
             <div class="album-info">
                 <h1 th:text="${song.name}">Midnight Memories</h1>
                 <div class="artist-info">
-                    <img src="/img/icons/icon.svg" alt="Foto del artista" class="artist-photo">
+                    <img th:src="@{|/files/artist/${song.artistImgPath}|}" alt="Foto del artista" class="artist-photo">
                     <p th:text="${song.artist} + ' | ' + ${song.dateCreate}">One Direction | 2013</p>
                 </div>
             </div>
