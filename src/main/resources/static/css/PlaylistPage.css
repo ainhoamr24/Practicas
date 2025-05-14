@@ -54,22 +54,11 @@ h2 + p {
 
 .artist-photo {
     width: 40px;
-}
-
-.play-button {
-    background-color: var(--pink);
-    border: none;
-    color: white;
-    font-size: 2em;
-    width: 80px;
-    height: 80px;
     border-radius: 50%;
-    cursor: pointer;
-    margin-left: auto;
 }
 
 .tracklist article {
-    margin-top: 20px;
+    align-content: center;
 }
 
 .image {

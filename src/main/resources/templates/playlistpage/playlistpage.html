@@ -20,7 +20,6 @@
           <p th:text="${playlist.artist} + ' | ' + ${playlist.dateCreate}">One Direction | 2013</p>
         </div>
       </div>
-      <button class="play-button">▶</button>
     </div>
     <section class="tracklist">
       <div class="image" th:each="song : ${playlist.songs}">
