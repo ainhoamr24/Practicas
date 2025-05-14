@@ -16,6 +16,7 @@ public class SongRowMapper extends RowMapper<Song> {
         song.setArtistImgPath(rs.getString("artistImgPath"));
         song.setDateCreate(rs.getDate("dateCreate").toLocalDate());
         song.setSeconds(rs.getLong("seconds"));
+        song.setUrl(rs.getString("url"));
 
         return song;
     }

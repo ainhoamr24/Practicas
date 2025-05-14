@@ -1,12 +1,12 @@
-insert into tb_song(name, artist, artistImgPath, seconds, dateCreate, imgPath) values
-    ('Re-Hash', 'Gorillaz', 'gorillaz.jpg', 270, '2025-05-06', 'gorillaz.jpg'),
-    ('5/4', 'Gorillaz', 'gorillaz.jpg', 194, '2025-05-06', 'gorillaz.jpg'),
-    ('Shy', 'HUNNY', 'hunny.jpg', 194, '2025-05-06', 'windows.jpg'),
-    ('Televised', 'HUNNY', 'hunny.jpg', 194, '2025-05-06', 'windows.jpg'),
-    ('Lula, I''m Not Mad', 'HUNNY', 'hunny.jpg', 194, '2025-05-06', 'yes_yes.jpg'),
-    ('Change Ur Mind', 'HUNNY', 'hunny.jpg', 194, '2025-05-06', 'yes_yes.jpg'),
-    ('Midnight Study', 'Lo-Fi Beats', 'lofi.jpg', 185, '2025-05-06', 'lofi.jpg'),
-    ('Coffee Break', 'Lo-Fi Beats', 'lofi.jpg', 210, '2025-05-06', 'lofi.jpg');
+insert into tb_song(name, artist, artistImgPath, seconds, dateCreate, imgPath, url) values
+    ('Re-Hash', 'Gorillaz', 'gorillaz.jpg', 270, '2025-05-06', 'gorillaz.jpg', 'https://www.youtube.com/watch?v=Z3aC2SptDag'),
+    ('5/4', 'Gorillaz', 'gorillaz.jpg', 194, '2025-05-06', 'gorillaz.jpg', 'https://youtu.be/z46bm9HR7L4?si=KKDxTlR6_9uGma_z'),
+    ('Shy', 'HUNNY', 'hunny.jpg', 194, '2025-05-06', 'windows.jpg', 'https://youtu.be/AgbOhWl20PY?si=HbN2Uo5Ka9VpFl8a'),
+    ('Televised', 'HUNNY', 'hunny.jpg', 194, '2025-05-06', 'windows.jpg', 'https://youtu.be/uGaXjy6-hG0?si=F6dBBqAeoyAxCOhe'),
+    ('Lula, I''m Not Mad', 'HUNNY', 'hunny.jpg', 194, '2025-05-06', 'yes_yes.jpg', 'https://youtu.be/Yd5hcCHwQA0?si=bcVBQ3jlCfctuHyp'),
+    ('Change Ur Mind', 'HUNNY', 'hunny.jpg', 194, '2025-05-06', 'yes_yes.jpg', 'https://youtu.be/RNxFaAfnE10?si=oohgrWH_dYTE09QG'),
+    ('Midnight Study', 'Lo-Fi Beats', 'lofi.jpg', 185, '2025-05-06', 'lofi.jpg', 'https://youtu.be/1tUPFQ54gqc?si=QLu9f4kxjhKBbXvt'),
+    ('Coffee Break', 'Lo-Fi Beats', 'lofi.jpg', 210, '2025-05-06', 'lofi.jpg', 'https://youtu.be/PElArDnvIxU?si=xZDT685WDXMBt6ng');
 
 insert into tb_playlist(name, artist, artistImgPath, dateCreate, imgPath) values
     ('Gorillaz', 'Gorillaz', 'gorillaz.jpg', '2025-05-06', 'gorillaz.jpg'),

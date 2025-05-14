@@ -85,7 +85,7 @@ class GenreServiceImplIT extends JdbcTest {
 
         @Test
         void getGenreBySongWithoutGenres_shouldReturnEmptyList() {
-            Song song = new Song(99L, "test.jpg", 180L, "Test Song", "Test Artist", "test.jpg", null, null);
+            Song song = new Song(99L, "test.jpg", 180L, "Test Song", "Test Artist", "test.jpg", null, null, null);
 
             List<Genre> result = genreService.getGenreBySong(song);
 

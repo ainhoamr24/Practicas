@@ -109,18 +109,21 @@ h2 + p {
 
         .album-container {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            gap: 25%;
+            min-height: 75vh;
         }
 
         .album-header {
             display: flex;
             flex-direction: column;
-            margin-top: 100px;
+            align-self: center;
             margin-left: 1%;
         }
 
         .album-cover{
             margin-left: 5%;
+            align-self: center;
         }
 
         .play-button{
@@ -132,12 +135,6 @@ h2 + p {
         }
 
         .tracklist {
-            margin-top: -375px;
-            margin-left: 65%;
-            width: 200px;
-            height: 400px;
-            overflow-y: auto;
-            overflow-x: hidden;
             align-self: center;
         }
 
@@ -147,6 +144,12 @@ h2 + p {
 }
 
 @media (max-width: 600px) {
+
+    .album-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
 
     .album-header{
         display: flex;
@@ -162,6 +165,9 @@ h2 + p {
     .tracklist {
         margin-top: 15px;
         margin-left: 10px;
+        overflow-y: auto;
+        max-height: 60vh;
+        margin-bottom: 50px;
     }
 
     .play-button{

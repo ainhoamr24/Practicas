@@ -22,7 +22,7 @@
       </div>
     </div>
     <section class="tracklist">
-      <div class="image" th:each="song : ${playlist.songs}">
+      <div class="image" th:each="song : ${playlist.songs}" th:attr="onclick='window.location.href=\'' + ${song.url} + '\''">
         <img th:src="|/files/song/${song.imgPath}|" alt="Song" class="song-cover">
         <article class="song">
           <h2 th:text="${song.name}">Título de la canción</h2>

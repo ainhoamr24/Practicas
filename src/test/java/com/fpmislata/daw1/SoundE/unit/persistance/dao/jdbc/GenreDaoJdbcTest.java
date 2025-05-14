@@ -84,7 +84,7 @@ class GenreDaoJdbcTest extends JdbcTest {
     class GetGenreBySong {
         @Test
         void getGenreBySong_shouldReturnGenres() {
-            Song song = new Song(1L, "gorillaz.jpg", 270L, "Re-Hash", "Gorillaz", "gorillaz.jpg", LocalDate.parse("2025-05-06"), null);
+            Song song = new Song(1L, "gorillaz.jpg", 270L, "Re-Hash", "Gorillaz", "gorillaz.jpg", LocalDate.parse("2025-05-06"), null, "https://www.youtube.com/watch?v=Z3aC2SptDag");
             List<Genre> result = genreDao.getGenreBySong(song);
             List<Genre> expectedList = List.of(expectedGenreList.get(0), expectedGenreList.get(3));
 
@@ -93,7 +93,7 @@ class GenreDaoJdbcTest extends JdbcTest {
 
         @Test
         void getGenreBySong_shouldReturnDifferentGenres() {
-            Song song = new Song(7L, "lofi.jpg", 185L, "Midnight Study", "Lo-Fi Beats", "lofi.jpg", LocalDate.parse("2025-05-06"), null);
+            Song song = new Song(7L, "lofi.jpg", 185L, "Midnight Study", "Lo-Fi Beats", "lofi.jpg", LocalDate.parse("2025-05-06"), null, "https://youtu.be/1tUPFQ54gqc?si=QLu9f4kxjhKBbXvt");
             List<Genre> result = genreDao.getGenreBySong(song);
             List<Genre> expectedList = List.of(expectedGenreList.get(2), expectedGenreList.get(4));
 

@@ -20,11 +20,12 @@ public class Song {
     private LocalDate dateCreate;
     private List<Genre> genres;
     private Duration duration;
+    private String url;
 
     public Song() {
     }
 
-    public Song(Long id, String imgPath, Long seconds, String name, String artist, String artistImgPath, LocalDate dateCreate, List<Genre> genres) {
+    public Song(Long id, String imgPath, Long seconds, String name, String artist, String artistImgPath, LocalDate dateCreate, List<Genre> genres, String url) {
         this.id = id;
         this.imgPath = imgPath;
         this.seconds = seconds;
@@ -34,6 +35,7 @@ public class Song {
         this.dateCreate = dateCreate;
         this.genres = genres;
         setDuration(seconds);
+        this.url = url;
     }
 
     public String getArtist() {
@@ -117,6 +119,14 @@ public class Song {
 
     public String getFormattedDuration() {
         return String.format("%02d:%02d", duration.toMinutes(), duration.getSeconds() % 60);
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @Override

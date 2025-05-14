@@ -15,7 +15,8 @@ create table if not exists tb_song (
     artistImgPath text,
     seconds bigint not null,
     dateCreate date not null,
-    imgPath text not null
+    imgPath text not null,
+    url text null
 );
 
 create table if not exists tb_playlist (

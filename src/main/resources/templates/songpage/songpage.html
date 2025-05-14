@@ -23,7 +23,7 @@
             </div>
         </div>
     </div>
-    <article class="song">
+    <article class="song" th:attr="onclick='window.location.href=\'' + ${song.url} + '\''">
         <h2 th:text="${song.name}">Happily</h2>
         <p th:text="${song.artist}">One Direction</p>
     </article>

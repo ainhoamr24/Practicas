@@ -15,13 +15,13 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SongTest {
-    @ParameterizedTest(name = "(id = {0}, image = {1}, seconds = {2},  name = {3}, dateCreate = {4}), genres = {5})")
+    @ParameterizedTest(name = "(id = {0}, image = {1}, seconds = {2},  name = {3}, dateCreate = {4}), genres = {5}, url = {6}")
     @DisplayName("Song::Constructor")
     @CsvSource({
-            "1, /img/song/1/cover6, 155, Mockingbird, Deiber, /uploads/deiber, 2005-04-25, 1, Rap",
-            "2, /img/song/2/cover2, 190, Something in the way, Adrian, /uploads/adrian, 1991-05-12, 2, Rock,Rap"
+            "1, /img/song/1/cover6, 155, Mockingbird, Deiber, /uploads/deiber, 2005-04-25, 1, Rap, https://youtu.be/PElArDnvIxU?si=xZDT685WDXMBt6ng",
+            "2, /img/song/2/cover2, 190, Something in the way, Adrian, /uploads/adrian, 1991-05-12, 2, Rock Rap, https://youtu.be/PElArDnvIxU?si=xZDT685WDXMBt6ng"
     })
-    void songConstructorTest(Long id, String imgPath, Long seconds, String name, String artist, String artistPath, String dateCreateStr, Long idGenre, String genreName) {
+    void songConstructorTest(Long id, String imgPath, Long seconds, String name, String artist, String artistPath, String dateCreateStr, Long idGenre, String genreName, String url) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d");
         LocalDate dateCreate = LocalDate.parse(dateCreateStr, formatter);
 
@@ -36,6 +36,7 @@ class SongTest {
         song.setGenres(genres);
         song.setArtist(artist);
         song.setArtistImgPath(artistPath);
+        song.setUrl(url);
 
         assertAll(
                 () -> assertEquals(song.getId(), id),
@@ -45,7 +46,8 @@ class SongTest {
                 () -> assertEquals(song.getDateCreate(), dateCreate),
                 () -> assertEquals(song.getGenres(), genres),
                 () -> assertEquals(song.getArtist(), artist),
-                () -> assertEquals(song.getArtistImgPath(), artistPath)
+                () -> assertEquals(song.getArtistImgPath(), artistPath),
+                () -> assertEquals(song.getUrl(), url)
         );
     }
 }
