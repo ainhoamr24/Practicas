@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta username="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/loginpage.css">
+    <title>SoundE</title>
+</head>
+
+<body>
+<header>
+    <h1>Descubre un mundo de música con Sound<span class="last">E</span></h1>
+    <p>Explora millones de canciones, crea playlists personalizadas y descubre nuevos sonidos. Disfruta de una experiencia auditiva sin interrupciones, con calidad premium y sin límites.</p>
+</header>
+<main>
+    <div class="card">
+        <img class="logo" src="./Logo-SinFondol.png" alt="Logo SoundE">
+        <h2>SOUND<span class="lasth2">E</span></h2>
+        <form id="loginForm" method="post">
+            <!-- <p class="User">Usuario:</p> -->
+            <input type="text" id="user" name="usuario" class="user-bar" placeholder="Usuario" required>
+
+            <!-- <p>Contraseña:</p> -->
+            <input type="password" id="password" name="contraseña" class="password-bar" placeholder="**********" required>
+
+            <button type="submit" class="btn-login">Login</button>
+            <button type="button" class="btn-contraseña">He olvidado la contraseña</button>
+
+            <div class="header-hr"></div>
+
+            <button type="button" class="btn-cuenta" onclick="window.location.href='accountpage.html'">Crear cuenta</button>        </form>
+    </div>
+</main>
+</body>
+<script>
+    document.querySelector('.btn-cuenta').addEventListener('click', function() {
+        document.querySelector('.card-inner').classList.add('flipped');
+        setTimeout(() => {
+            window.location.href = 'accountpage.html';
+        }, 600);
+    });
+</script>
+</html>

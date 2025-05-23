@@ -1,0 +1,272 @@
+:root {
+    --text-size: 15px;
+    --subtitle-size: 1.3em;
+    --title-size: 2.4em;
+    --pink: #d103d1;
+    --gray: #404040;
+    --pink2: #ff3dff;
+    --border-radius: 8px;
+}
+
+@font-face {
+    font-family: Questrial;
+    src: url(./media/fonts/Questrial-Regular.ttf);
+}
+
+@font-face {
+    font-family: League Spartan;
+    src: url('fonts/LeagueSpartan.woff2') format('woff2'),
+         url('fonts/LeagueSpartan.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(circle at 50% 50%,
+        rgba(27, 25, 27, 0.9) 35%,
+        rgba(107, 53, 122, 0.9) 50%,
+        rgba(16, 16, 16, 0.9) 70%);
+    background-color: #120f13;
+    color: white;
+    font-family: Questrial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    margin: 20px;
+}
+
+h1 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 2.2em;
+}
+
+.last {
+    color: var(--pink2);
+}
+
+header p {
+    font-size: var(--text-size);
+    margin: 10px auto;
+    max-width: 80%;
+}
+
+/* MAIN */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+/* CARD */
+.card {
+    background-color: rgba(128, 128, 128, 0.5);
+    border-radius: 20px;
+    padding: 20px;
+    width: 280px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Logo e íconos */
+.logo {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.flecha {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 25px;
+}
+
+/* Títulos */
+h2 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 20px;
+    margin-top: 25px;
+}
+
+.lasth2 {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--pink2);
+    font-size: 20px;
+}
+
+.Datos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+
+/* Formularios */
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    margin-top: 15px;
+}
+
+form p {
+    position: absolute;
+    margin: 10px 0 5px 20px;
+    text-align: left;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="date"] {
+    width: 90%;
+    height: 35px;
+    border-radius: 20px;
+    border: none;
+    padding: 5px 15px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+/* Botón */
+.btn-continuar {
+    background-color: #004aad;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    height: 35px;
+    width: 70%;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+   body {
+        flex-direction: column;
+    }
+
+    .logo{
+        width: 100px;
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    form{
+        gap: 8px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    body {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-right: 5%;
+    }
+
+    header p {
+        margin-top: 4%;
+        margin-left: 10%;
+        margin-right: 2%;
+        font-size: 17px;
+        text-align: center;
+
+    }
+
+    .card {
+        width: 320px;
+        padding: 20px;
+    }
+
+    .logo {
+        width: 90px;
+    }
+
+    .flecha {
+        width: 25px;
+    }
+
+    h2, .lasth2 {
+        font-size: 21px;
+    }
+
+    .btn-continuar {
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 901px) {
+    body {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    header {
+        width: 50%;
+        align-items: flex-start;
+    }
+
+    header h1 {
+        font-size: 3.5em;
+        width: 100%;
+        text-align: center;
+        padding: 30px;
+    }
+
+    header p {
+        font-size: 20px;
+        width: 80%;
+        text-align: center;
+    }
+
+    .card {
+        width: 380px;
+        height: auto;
+        margin-left: -5%;
+        padding: 25px;
+    }
+
+    .logo {
+        width: 100px;
+    }
+
+    .flecha {
+        width: 30px;
+        margin-left: 10px;
+        margin-top: 5px;
+    }
+
+    h2, .lasth2 {
+        font-size: 24px;
+    }
+
+    .btn-continuar {
+        height: 40px;
+        font-size: 17px;
+    }
+
+    input {
+        height: 40px;
+    }
+}
