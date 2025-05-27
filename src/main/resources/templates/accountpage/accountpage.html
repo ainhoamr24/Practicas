@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta username="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/accountpage.css">
+    <link rel="stylesheet" th:href="@{/css/accountpage.css}">
     <title>SoundE</title>
 </head>
 
@@ -15,29 +15,25 @@
 </header>
 <main>
     <div class="card">
-        <a href="loginpage.html">
-            <img src="./ImagenFlecha.png" class="flecha" alt="Flecha de retorno">
+        <a th:href="@{/login}">
+            <img th:src="@{/img/icons/ImagenFlecha.png}" class="flecha" alt="Flecha de retorno">
         </a>
-        <img src="./Logo-SinFondol.png" class="logo" alt="Logo SoundE">
+        <img th:src="@{/img/icons/Logo-ConFondol.png}" class="logo" alt="Logo SoundE">
         <h2>SOUND<span class="lasth2">E</span></h2>
         <p class="Datos">Introduce tus datos</p>
 
-        <form id="registrationForm" method="post">
-            <!-- <p>Correo electrónico:</p> -->
-            <input type="email" id="email" name="email" class="email-bar" placeholder="Correo" required>
+        <form id="registrationForm" th:action="@{/register}" method="post" th:object="${user}">
+            <input type="email" id="email" th:field="*{email}" class="email-bar" placeholder="Correo" required>
+            <input type="password" id="passwd" th:field="*{password}" class="passwd-bar" placeholder="**********" required>
+            <input type="text" id="nombre" th:field="*{username}" class="nombre-bar" placeholder="Usuario" required>
+            <input type="date" id="date" th:field="*{birthdate}" required>
 
-            <!-- <p>Contraseña:</p> -->
-            <input type="password" id="passwd" name="password" class="passwd-bar" placeholder="**********" required>
+            <div th:if="${#fields.hasErrors('*')}" class="alert alert-error">
+                <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+            </div>
 
-            <!-- <p>Nombre de usuario:</p> -->
-            <input type="text" id="nombre" name="username" class="nombre-bar" placeholder="Usuario" required>
-
-            <!-- <p>Fecha de nacimiento:</p> -->
-            <input type="date" id="date" name="birthdate" required>
+            <button type="submit" class="btn-continuar">Continuar</button>
         </form>
-
-        <button type="submit" class="btn-continuar">Continuar</button>
-
     </div>
 </main>
 </body>

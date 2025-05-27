@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta username="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/loginpage.css">
+    <link rel="stylesheet" th:href="@{/css/loginpage.css}">
     <title>SoundE</title>
 </head>
 
@@ -15,30 +15,33 @@
 </header>
 <main>
     <div class="card">
-        <img class="logo" src="./Logo-SinFondol.png" alt="Logo SoundE">
+        <img class="logo" th:src="@{/img/icons/Logo-ConFondol.png}" alt="Logo SoundE">
         <h2>SOUND<span class="lasth2">E</span></h2>
-        <form id="loginForm" method="post">
-            <!-- <p class="User">Usuario:</p> -->
-            <input type="text" id="user" name="usuario" class="user-bar" placeholder="Usuario" required>
-
-            <!-- <p>Contraseña:</p> -->
-            <input type="password" id="password" name="contraseña" class="password-bar" placeholder="**********" required>
+        <form id="loginForm" th:action="@{/login}" method="post">
+            <input type="text" id="user" name="username" class="user-bar" placeholder="Usuario" required>
+            <input type="password" id="password" name="password" class="password-bar" placeholder="**********" required>
 
             <button type="submit" class="btn-login">Login</button>
-            <button type="button" class="btn-contraseña">He olvidado la contraseña</button>
+            <button type="button" class="btn-contraseña" th:onclick="@{location.href='/forgot-password'}">He olvidado la contraseña</button>
 
             <div class="header-hr"></div>
 
-            <button type="button" class="btn-cuenta" onclick="window.location.href='accountpage.html'">Crear cuenta</button>        </form>
+            <button type="button" class="btn-cuenta" th:onclick="@{location.href='/register'}">Crear cuenta</button>
+        </form>
+
+        <div th:if="${param.error}" class="alert alert-error">
+            Usuario o contraseña incorrectos
+        </div>
     </div>
 </main>
-</body>
-<script>
+
+<script th:inline="javascript">
     document.querySelector('.btn-cuenta').addEventListener('click', function() {
         document.querySelector('.card-inner').classList.add('flipped');
         setTimeout(() => {
-            window.location.href = 'accountpage.html';
+            window.location.href = /*[[@{/register}]]*/ '';
         }, 600);
     });
 </script>
+</body>
 </html>
