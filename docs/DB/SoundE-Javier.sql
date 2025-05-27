@@ -4,11 +4,9 @@ use sounde;
 create table if not exists tb_user (
     id_usr int primary key auto_increment,
     username varchar(50) not null,
-    password varchar(50) not null,
+    password varchar(100) not null,
     email text not null,
-    birthDate date not null,
-    dateCreate date not null,
-    imgPath text
+    birthDate date not null
 );
 
 create table if not exists tb_song (
