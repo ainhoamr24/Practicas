@@ -3,6 +3,7 @@ import com.fpmislata.daw1.SoundE.domain.entity.User;
 import com.fpmislata.daw1.SoundE.domain.service.LoginService;
 import com.fpmislata.daw1.SoundE.persistance.repository.LoginRepository;
 import com.fpmislata.daw1.SoundE.persistance.repository.PlaylistRepository;
+import utils.Password;
 
 public class LoginServiceImpl implements LoginService {
 
@@ -14,7 +15,13 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public User authenticate(String username, String password) {
-        return loginRepository.authenticate(username, password);
+
+        User user = loginRepository.findByUsername(username);
+        if (user != null && Password.matchPassword(password, user.getPassword())) {
+            return user;
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -31,5 +38,7 @@ public class LoginServiceImpl implements LoginService {
     public User findByUsername(String username) {
         return loginRepository.findByUsername(username);
     }
+
+
 }
 

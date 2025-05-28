@@ -8,6 +8,7 @@ import com.fpmislata.daw1.SoundE.common.container.AccountIoc;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import utils.Password;
 
 @Controller
 public class UserController {
@@ -32,7 +33,7 @@ public class UserController {
                                Model model) {
         User user = loginService.authenticate(username, password);
         if (user != null) {
-            return "redirect:/principalpage";
+            return "redirect:/";
         } else {
             model.addAttribute("error", true);
             return "loginpage/loginpage.html";
@@ -60,6 +61,7 @@ public class UserController {
         accountService.create(user);
         return "redirect:/login";
     }
+
 
     @GetMapping("/principalpage")
     public String showPrincipal() {

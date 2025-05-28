@@ -3,6 +3,7 @@ package com.fpmislata.daw1.SoundE.domain.service.impl;
 import com.fpmislata.daw1.SoundE.domain.entity.User;
 import com.fpmislata.daw1.SoundE.domain.service.AccountService;
 import com.fpmislata.daw1.SoundE.persistance.repository.AccountRepository;
+import utils.Password;
 
 import java.util.List;
 
@@ -16,6 +17,8 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public User create(User user) {
+        String hashedPassword = Password.hashPassword(user.getPassword());
+        user.setPassword(hashedPassword);
         return accountRepository.create(user);
     }
 
