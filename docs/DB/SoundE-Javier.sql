@@ -63,4 +63,4 @@ create table if not exists tb_songGenres (
 
 
 create user 'sounde'@'localhost' identified by 'sounde';
-grant select on sounde.* to 'sounde'@'localhost';
+FLUSH PRIVILEGES;

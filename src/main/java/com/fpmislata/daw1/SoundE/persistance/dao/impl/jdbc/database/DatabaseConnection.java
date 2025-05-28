@@ -79,15 +79,11 @@ public class DatabaseConnection {
         }
     }
 
-    public int executeUpdateSql(String sql, List<Object> parameters) {
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            for (int i = 0; i < parameters.size(); i++) {
-                preparedStatement.setObject(i + 1, parameters.get(i));
-            }
-            return preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException("Error al ejecutar SQL de actualización: " + e.getMessage(), e);
+    public int executeUpdateSql(String sql, List<Object> parameters) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        for (int i = 0; i < parameters.size(); i++) {
+            preparedStatement.setObject(i + 1, parameters.get(i));
         }
+        return preparedStatement.executeUpdate();
     }
 }

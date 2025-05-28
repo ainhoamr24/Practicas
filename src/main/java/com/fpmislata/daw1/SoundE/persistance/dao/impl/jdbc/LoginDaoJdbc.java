@@ -50,8 +50,12 @@ public class LoginDaoJdbc implements LoginDao {
         String sql = "UPDATE tb_user SET password = ? WHERE username = ?";
         List<Object> parameters = List.of(newPassword, username);
 
-        int rowsAffected = databaseConnection.executeUpdateSql(sql, parameters);
-        return rowsAffected > 0;
+        try {
+            int rowsAffected = databaseConnection.executeUpdateSql(sql, parameters);
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
