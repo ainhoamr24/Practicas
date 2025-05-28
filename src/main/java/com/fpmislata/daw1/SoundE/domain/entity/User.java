@@ -7,7 +7,7 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private LocalDate birthDate;
+    private LocalDate birthdate;
 
     public User() {
     }
@@ -17,7 +17,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.birthDate = birthDate;
+        this.birthdate = birthDate;
     }
 
     public Long getId() {
@@ -52,12 +52,12 @@ public class User {
         this.email = email;
     }
 
-    public LocalDate getBirthDate() {
-        return birthDate;
+    public LocalDate getBirthdate() {
+        return birthdate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
     }
 
     @Override
@@ -67,7 +67,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", birthDate=" + birthDate +
+                ", birthDate=" + birthdate +
                 '}';
     }
 }

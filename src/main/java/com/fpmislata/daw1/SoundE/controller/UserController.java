@@ -21,8 +21,9 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String showLogin() {
-        return "loginpage";
+    public String showLogin(Model model) {
+        model.addAttribute("error", false);
+        return "loginpage/loginpage.html";
     }
 
     @PostMapping("/login")
@@ -34,34 +35,34 @@ public class UserController {
             return "redirect:/principalpage";
         } else {
             model.addAttribute("error", true);
-            return "loginpage";
+            return "loginpage/loginpage.html";
         }
     }
 
     @GetMapping("/register")
     public String showRegister(Model model) {
         model.addAttribute("user", new User());
-        return "accountpage";
+        return "accountpage/accountpage.html";
     }
 
     @PostMapping("/register")
     public String processRegister(@ModelAttribute User user, Model model) {
         if (accountService.existsByUsername(user.getUsername())) {
             model.addAttribute("error", "El nombre de usuario ya existe.");
-            return "accountpage";
+            return "accountpage/accountpage.html";
         }
 
         if (accountService.existsByEmail(user.getEmail())) {
             model.addAttribute("error", "El correo electrónico ya está en uso.");
-            return "accountpage";
+            return "accountpage/accountpage.html";
         }
 
         accountService.create(user);
-        return "redirect:/loginpage";
+        return "redirect:/login";
     }
 
     @GetMapping("/principalpage")
     public String showPrincipal() {
-        return "principalpage";
+        return "principalpage/principalpage.html";
     }
 }

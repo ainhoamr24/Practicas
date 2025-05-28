@@ -22,7 +22,7 @@ public class AccountDaoJdbc implements AccountDao {
     @Override
     public User create(User user) {
         String sql = "INSERT INTO tb_user (username, password, email, birthDate) VALUES (?, ?, ?, ?)";
-        List<Object> parameters = List.of(user.getUsername(), user.getPassword(), user.getEmail(), user.getBirthDate());
+        List<Object> parameters = List.of(user.getUsername(), user.getPassword(), user.getEmail(), user.getBirthdate());
 
         try {
             int rowsAffected = databaseConnection.executeUpdateSql(sql, parameters);

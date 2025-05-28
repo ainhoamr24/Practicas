@@ -9,11 +9,11 @@ public class UserRowMapper extends RowMapper<User> {
     @Override
     public User mapItem(ResultSet rs) throws SQLException {
         User user = new User();
-        user.setId(rs.getLong("id_user"));
+        user.setId(rs.getLong("id_usr"));
         user.setUsername(rs.getString("username"));
         user.setPassword(rs.getString("password"));
         user.setEmail(rs.getString("email"));
-        user.setBirthDate(rs.getDate("birthDate").toLocalDate());
+        user.setBirthdate(rs.getDate("birthDate").toLocalDate());
 
         return user;
     }
