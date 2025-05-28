@@ -9,6 +9,9 @@ public class User {
     private String email;
     private LocalDate birthDate;
 
+    public User() {
+    }
+
     public User(Long id, String username, String password, String email, LocalDate birthDate) {
         this.id = id;
         this.username = username;
