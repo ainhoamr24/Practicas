@@ -1,3 +1,9 @@
+insert into tb_user (username, password, email, birthDate) values
+    ('user1', '$2a$10$xN4rBmOJ3PAVTL5pDA/STOOI8cj1MlBX2Dnbg4RYduRYvz/ivyeJG', 'user1@mail.com', '2000-01-05'),
+    ('user2', '$2a$10$xN4rBmOJ3PAVTL5pDA/STOOI8cj1MlBX2Dnbg4RYduRYvz/ivyeJG', 'user2@mail.com', '2001-02-10'),
+    ('user3', '$2a$10$xN4rBmOJ3PAVTL5pDA/STOOI8cj1MlBX2Dnbg4RYduRYvz/ivyeJG', 'user3@mail.com', '2002-03-15'),
+    ('user4', '$2a$10$xN4rBmOJ3PAVTL5pDA/STOOI8cj1MlBX2Dnbg4RYduRYvz/ivyeJG', 'user4@mail.com', '2003-04-20');
+
 insert into tb_song(name, artist, artistImgPath, seconds, dateCreate, imgPath, url) values
     ('Re-Hash', 'Gorillaz', 'gorillaz.jpg', 270, '2025-05-06', 'gorillaz.jpg', 'https://www.youtube.com/watch?v=Z3aC2SptDag'),
     ('5/4', 'Gorillaz', 'gorillaz.jpg', 194, '2025-05-06', 'gorillaz.jpg', 'https://youtu.be/z46bm9HR7L4?si=KKDxTlR6_9uGma_z'),
