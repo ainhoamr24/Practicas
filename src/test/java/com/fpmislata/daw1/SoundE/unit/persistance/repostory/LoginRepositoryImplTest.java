@@ -27,29 +27,6 @@ class LoginRepositoryImplTest {
     private LoginRepositoryImpl loginRepository;
 
     @Nested
-    class Authenticate {
-        @Test
-        void authenticate_withValidCredentials_shouldReturnUser() {
-            when(loginDao.authenticate("user1", "pass000")).thenReturn(USER);
-
-            User result = loginRepository.authenticate("user1", "pass000");
-
-            assertEquals(USER, result);
-            verify(loginDao).authenticate("user1", "pass000");
-        }
-
-        @Test
-        void authenticate_withInvalidCredentials_shouldReturnNull() {
-            when(loginDao.authenticate("user1", "wrongpass")).thenReturn(null);
-
-            User result = loginRepository.authenticate("user1", "wrongpass");
-
-            assertNull(result);
-            verify(loginDao).authenticate("user1", "wrongpass");
-        }
-    }
-
-    @Nested
     class UpdatePassword {
         @Test
         void updatePassword_withValidData_shouldReturnTrue() {

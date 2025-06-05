@@ -10,10 +10,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import utils.Password;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -63,7 +66,8 @@ class LoginServiceImplTest {
     class UpdatePassword {
         @Test
         void updatePassword_shouldReturnTrue_whenSuccessful() {
-            when(loginRepository.updatePassword("user1", "newpass")).thenReturn(true);
+            when(loginRepository.findByUsername("user1")).thenReturn(USER_LIST.get(0));
+            when(loginRepository.updatePassword(eq("user1"), anyString())).thenReturn(true);
 
             boolean result = loginService.updatePassword("user1", "newpass");
 
@@ -72,7 +76,7 @@ class LoginServiceImplTest {
 
         @Test
         void updatePassword_shouldReturnFalse_whenFailed() {
-            when(loginRepository.updatePassword("nonexistent", "newpass")).thenReturn(false);
+            when(loginRepository.findByUsername("nonexistent")).thenReturn(null);
 
             boolean result = loginService.updatePassword("nonexistent", "newpass");
 

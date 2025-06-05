@@ -12,9 +12,6 @@ public class LoginRepositoryImpl implements LoginRepository {
         this.loginDao = loginDao;
     }
 
-    public User authenticate(String username, String password) {
-        return loginDao.authenticate(username, password);
-    }
 
     public boolean updatePassword(String username, String newPassword) {
         return loginDao.updatePassword(username, newPassword);
