@@ -20,19 +20,6 @@ public class LoginDaoJdbc implements LoginDao {
     }
 
     @Override
-    public User authenticate(String username, String password) {
-        String sql = "SELECT * FROM tb_user WHERE username = ? AND password = ?";
-        List<Object> parameters = List.of(username, password);
-
-        try (ResultSet rs = databaseConnection.executeSql(sql, parameters)) {
-            List<User> userList = userRowMapper.map(rs);
-            return userList.isEmpty() ? null : userList.get(0);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
     public User findByUsername(String username) {
         String sql = "SELECT * FROM tb_user WHERE username = ?";
         List<Object> parameters = List.of(username);

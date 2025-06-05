@@ -47,7 +47,7 @@ class LoginServiceImplIT extends JdbcTest {
         @Test
         void updatePassword_shouldReturnTrue_whenSuccessful() {
             boolean result = loginService.updatePassword("user1", "newpass");
-
+            User user1 = loginService.findByUsername("user1");
             assertTrue(result);
 
             User user = loginService.authenticate("user1", "newpass");

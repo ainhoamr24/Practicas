@@ -26,7 +26,13 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public boolean updatePassword(String username, String newPassword) {
-        return loginRepository.updatePassword(username, newPassword);
+        User user = loginRepository.findByUsername(username);
+        String hashedPassword = Password.hashPassword(newPassword);
+        if ( user == null) {
+            return false;
+        }
+        user.setPassword(hashedPassword);
+        return loginRepository.updatePassword(username, hashedPassword);
     }
 
     @Override
